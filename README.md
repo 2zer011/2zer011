@@ -22,3 +22,7 @@ Copy `decks/toan-co-dai.html`, sửa các `<section class="slide">`, rồi thêm
 ## Nền & hình
 - `assets/art.js` tự chèn nền SVG động theo class slide: `eg` (Ai Cập), `cn` (Trung Hoa), `in` (Ấn Độ), `dark`. Slide không có class → `eg`. Thêm `data-noart="1"` để tắt.
 - Chân dung: `assets/img/*.jpg` + khung `portrait pf-eg|pf-cn|pf-in`.
+
+## Decks
+- `decks/lich-su-a1.html` - Lịch sử A1: Hy Lạp & La Mã (theme `gr`/`ro`/`nv` in `assets/classic.css`, art in `assets/art.js`). Ghim đầu `index.html` bằng class `pin`.
+- `decks/toan-co-dai.html` - Toán cổ đại.

@@ -1,0 +1,36 @@
+/* theme: Hy Lạp - La Mã. gr = đá cẩm thạch + xanh Aegean, ro = đỏ đế chế + vàng, nv = đêm xanh */
+.gr{color:#12304a;background:radial-gradient(ellipse at 50% 35%,#fdfaf2 0%,#e7eef3 60%,#b4cddf 100%)}
+.ro{color:#3a1210;background:radial-gradient(ellipse at 50% 35%,#fbf1e7 0%,#efd9c8 60%,#c99478 100%)}
+.nv{color:#f5e3b0;background:radial-gradient(ellipse at 50% 40%,#1b3c66 0%,#0b1a30 72%,#050b14 100%)}
+.gr:before{border-color:#1f5f8b}.ro:before{border-color:#8c1c1c}.nv:before{border-color:#c9a24a}
+.nv:after{background:none}
+.gr h2{color:#1f5f8b;border-color:#b8892b}.ro h2{color:#8c1c1c;border-color:#b8892b}
+.gr h3{color:#1f5f8b}.ro h3{color:#8c1c1c}
+.gr .tag{color:#1f5f8b}.ro .tag{color:#8c1c1c}
+.gr li:before{background:#b8892b}.ro li:before{background:#b8892b}
+.gr .card{background:rgba(255,255,255,.66);border-color:#1f5f8b;box-shadow:0 6px 14px rgba(18,48,74,.2)}
+.ro .card{background:rgba(255,250,244,.66);border-color:#8c1c1c;box-shadow:0 6px 14px rgba(70,20,16,.22)}
+.gr .q{border-left-color:#1f5f8b;background:rgba(255,255,255,.55)}.ro .q{border-left-color:#8c1c1c;background:rgba(255,250,244,.55)}
+.nv .q{background:rgba(255,230,160,.1);border-left-color:#c9a24a}.nv .q span{color:#f5e3b0}.nv .q b{color:#f0c96a}
+.gr .sum{color:#12304a;background:linear-gradient(90deg,rgba(31,95,139,.3),rgba(31,95,139,.06));border-left-color:#1f5f8b}
+.ro .sum{color:#3a1210;background:linear-gradient(90deg,rgba(140,28,28,.26),rgba(140,28,28,.05));border-left-color:#8c1c1c}
+.gr .sum b,.gr .red{color:#b5532a}.ro .sum b,.ro .red{color:#8c1c1c}
+.gr .gold,.ro .gold{color:#a8701a}.gr .blue{color:#1f5f8b}
+.gr .qn,.gr .nmb{background:#1f5f8b}.ro .qn,.ro .nmb{background:#8c1c1c}
+.gr .av,.gr .avl,.ro .av,.ro .avl{color:#12304a}.ro .av,.ro .avl{color:#3a1210}
+.gr .avi{border-color:#b8892b}.ro .avi{border-color:#b8892b}
+.gr th,.gr td{border-color:#1f5f8b}.gr th{background:#1f5f8b}.ro th,.ro td{border-color:#8c1c1c}.ro th{background:#8c1c1c}
+.gr .hlbar,.ro .hlbar{border-color:#b8892b}
+.gr .shine{background-image:linear-gradient(100deg,#12304a 30%,#6fb0d8 48%,#fff 50%,#6fb0d8 52%,#12304a 70%)}
+.ro .shine{background-image:linear-gradient(100deg,#8c1c1c 30%,#e8b94a 48%,#fff1b8 50%,#e8b94a 52%,#8c1c1c 70%)}
+.med{width:64px;height:64px;margin:0 auto 4px;border-radius:50%;border:3px solid #b8892b;color:#fff;font:bold 34px/58px Georgia,serif;box-shadow:0 4px 10px rgba(20,30,50,.4)}
+.swing{-webkit-transform-origin:190px 90px;transform-origin:190px 90px;animation:beam 4.5s ease-in-out infinite alternate}
+@keyframes beam{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+.cur [data-step] .nsw{animation:none}
+/* glow tints */
+.gr .glow i{background:radial-gradient(circle,rgba(255,255,255,.75),rgba(255,255,255,0) 68%)}
+.gr .glow i.g2{background:radial-gradient(circle,rgba(90,170,220,.34),rgba(90,170,220,0) 68%)}
+.ro .glow i.g2{background:radial-gradient(circle,rgba(176,38,38,.22),rgba(176,38,38,0) 68%)}
+.nv .glow i{background:radial-gradient(circle,rgba(240,200,110,.16),rgba(240,200,110,0) 68%)}
+.nv .glow i.g2{background:radial-gradient(circle,rgba(80,130,230,.28),rgba(80,130,230,0) 68%)}
+.nv .glow u{display:none}.nv .glow b{opacity:.06}

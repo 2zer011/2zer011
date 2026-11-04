@@ -77,7 +77,38 @@
     s += mf('#f5d98a'); return s + '</svg>';
   }
 
-  var T = { eg: eg, cn: cn, 'in': ind, dark: dk };
+
+  function mg(c, G) { return f(c, .22, R(14, function (i) { return '<text x="' + (70 + rnd(i, 1130, 43)) + '" y="700" font-size="' + (28 + i % 4 * 9) + '" font-family="Georgia,serif" class="rise" style="animation-delay:-' + (i * 1.7) + 's;animation-duration:' + (14 + i % 5 * 3) + 's">' + G[i % G.length] + '</text>'; })); }
+  function meander(c, y0) { return g(c, .3, 2.4, R(50, function (i) { var x = i * 26; return '<path d="M' + x + ' ' + (y0 + 18) + 'V' + y0 + 'H' + (x + 18) + 'V' + (y0 + 13) + 'H' + (x + 6) + 'V' + (y0 + 7) + 'H' + (x + 12) + '"/>'; })); }
+  function gr() {
+    var c = '#12304a', s = H;
+    s += meander(c, 24) + meander(c, 678);
+    s += g('#c8921e', .45, 3, '<circle cx="1130" cy="120" r="36"/>' + R(20, function (i) { return '<path d="M1130 66V80" transform="rotate(' + (i * 18) + ' 1130 120)"/>'; }), 'class="spin" style="transform-origin:1130px 120px"');
+    /* distant parthenon */
+    s += f(c, .06, '<path d="M880 640V500H1220V640Z"/><path d="M860 500L1050 440L1240 500Z"/>') + g(c, .26, 2, '<path d="M860 500L1050 440L1240 500Z"/><path d="M880 500H1220M870 640H1230M865 652H1235"/>' + R(8, function (i) { return '<path d="M' + (896 + i * 46) + ' 504V636"/>'; }));
+    /* aegean */
+    s += g('#1f5f8b', .32, 3, '<path d="' + wave(606, 1400) + '"/>', 'class="drift"') + g('#1f5f8b', .24, 3, '<path d="' + wave(622, 1400) + '"/>', 'class="drift" style="animation-duration:7s"') + g('#1f5f8b', .16, 3, '<path d="' + wave(638, 1400) + '"/>', 'class="drift" style="animation-duration:9s"');
+    s += f('#5d7f4a', .5, R(12, function (i) { return '<ellipse cx="' + (60 + rnd(i, 1100, 37)) + '" cy="-20" rx="9" ry="3.4" class="fall" style="animation-delay:-' + (i * 1.4) + 's;animation-duration:' + (13 + i % 4 * 3) + 's"/>'; }));
+    s += f('#d4a437', .6, R(10, function (i) { return '<circle cx="' + (60 + rnd(i, 1150, 31)) + '" cy="' + (260 + rnd(i, 330, 17)) + '" r="' + (2 + i % 3) + '" class="float" style="animation-delay:-' + (i * 0.9) + 's"/>'; }));
+    s += mg(c, ['α', 'β', 'γ', 'δ', 'π', 'Σ', 'Ω', 'φ', 'θ', 'λ', 'ψ', 'ξ']); return s + '</svg>';
+  }
+  function ro() {
+    var c = '#4a1410', s = H;
+    function arc(y) { return g(c, .3, 2.4, R(46, function (i) { var x = i * 28; return '<path d="M' + x + ' ' + (y + 20) + 'V' + (y + 8) + 'a14 14 0 0 1 28 0V' + (y + 20) + '"/>'; })); }
+    s += arc(24) + arc(676);
+    /* colosseum */
+    var tiers = ''; [0, 1].forEach(function (t) { tiers += R(14, function (i) { var x = 300 + i * 46, y = 600 - t * 46; return '<path d="M' + x + ' ' + (y + 40) + 'V' + (y + 18) + 'a14 14 0 0 1 28 0V' + (y + 40) + '"/>'; }); });
+    s += f(c, .06, '<path d="M290 640H950V520H290Z"/>') + g(c, .22, 2, tiers + '<path d="M290 640H950M290 594H950M290 548H950M290 520H950M290 520V640M950 520V640"/>');
+    /* standard */
+    s += g('#8c1c1c', .4, 3, '<path d="M1140 70H1240M1190 70V58"/><path d="M1150 70V170H1230V70M1150 170L1160 184L1170 170L1180 184L1190 170L1200 184L1210 170L1220 184L1230 170"/>', 'class="sway" style="transform-origin:1190px 70px"') + '<text x="1190" y="128" font-size="19" text-anchor="middle" fill="#8c1c1c" fill-opacity=".5" font-family="Georgia" font-weight="bold">SPQR</text>';
+    s += g('#b8892b', .4, 3, '<circle cx="110" cy="130" r="38"/><circle cx="110" cy="130" r="24" stroke-width="2"/>' + R(16, function (i) { return '<path d="M110 76V90" transform="rotate(' + (i * 22.5) + ' 110 130)"/>'; }), 'class="spin" style="transform-origin:110px 130px"');
+    s += f('#7a8f3a', .55, R(12, function (i) { return '<ellipse cx="' + (60 + rnd(i, 1100, 29)) + '" cy="-20" rx="9" ry="3.4" class="fall" style="animation-delay:-' + (i * 1.3) + 's;animation-duration:' + (12 + i % 5 * 2) + 's"/>'; }));
+    s += f('#b32d2d', .4, R(8, function (i) { return '<circle cx="' + (80 + rnd(i, 1100, 13)) + '" cy="-20" r="3.5" class="fall" style="animation-delay:-' + (i * 1.9) + 's;animation-duration:' + (15 + i % 3 * 3) + 's"/>'; }));
+    s += '<g transform="translate(1100,628)"><rect width="44" height="44" fill="#8c1c1c" fill-opacity=".65"/><text x="22" y="29" font-size="17" text-anchor="middle" fill="#fff5d6" font-family="Georgia" font-weight="bold">2011</text></g>';
+    s += mg(c, ['A', 'B', 'C', 'D', 'I', 'V', 'X', 'L', 'M', 'SPQR', 'AVE', 'Ω']); return s + '</svg>';
+  }
+
+  var T = { eg: eg, cn: cn, 'in': ind, dark: dk, gr: gr, ro: ro };
   function theme(el) { var c = ' ' + el.className + ' ', k; for (k in T) if (c.indexOf(' ' + k + ' ') > -1) return k; return 'eg'; }
   function run() {
     var s = d.getElementById('stage'), i, e, t, w;
