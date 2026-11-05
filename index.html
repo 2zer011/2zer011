@@ -12,9 +12,24 @@ a.d:hover{background:#2e1d0b}
 a.d.pin{border-color:#6fb0d8;background:#102640}a.d.pin:hover{background:#17375e}.pn{display:inline-block;font-size:13px;letter-spacing:.12em;color:#102640;background:#6fb0d8;border-radius:4px;padding:2px 8px;margin-bottom:6px}
 a.d b{display:block;font-size:22px;color:#f5d98a}
 a.d span{font-size:15px;opacity:.75}
+.tb{text-align:center;margin:0 0 10px}.tb a{display:inline-block;padding:8px 20px;margin:0 4px;border:2px solid #b8892b;border-radius:8px 8px 0 0;color:#f3dfa8;text-decoration:none;cursor:pointer}.tb a.on{background:#b8892b;color:#120a03}
+#dl{display:none}.dl-n{font-size:14px;opacity:.7;margin:6px 0 18px;line-height:1.5}
 </style></head><body><div class="w">
 <h1>2zer011-slide</h1><p class="s">Chọn bài thuyết trình &bull; 2011</p>
+<div class="tb"><a id="t1" class="on" href="#">Bài trình chiếu</a><a id="t2" href="#dl">Tải về</a></div>
+<div id="ls">
 <a class="d pin" href="decks/lich-su-a1.html"><div class="pn">&#9733; GHIM</div><b>Lịch sử A1: Văn minh Hy Lạp &amp; La Mã</b><span>18 slide &bull; Lịch sử 10 KNTT bài 5 &bull; thành tựu &amp; tư tưởng phương Tây cổ đại</span></a>
 <a class="d" href="decks/toan-co-dai.html"><b>Thành tựu Toán học: Ai Cập · Trung Hoa · Ấn Độ</b><span>26 slide &bull; phong cách cổ đại &bull; có phần câu hỏi phản biện</span></a>
 <!-- thêm deck mới: copy một thẻ <a class="d"> ở trên -->
+</div>
+<div id="dl">
+<a class="d pin" href="downloads/lich-su-a1.pptx" download><div class="pn">PPTX</div><b>Lịch sử A1: Văn minh Hy Lạp &amp; La Mã</b><span>18 slide &bull; ~13 MB &bull; giữ hiệu ứng xuất hiện từng bước, chuyển slide, nền động, ghi chú thuyết trình</span></a>
+<p class="dl-n">Lưu ý: chữ trong file pptx là ảnh nên không sửa được; không có đếm số chạy và chữ gợn sóng; đường vẽ tay thay bằng hiệu ứng quét. Nên mở bằng PowerPoint để thấy đủ hiệu ứng. Bản HTML vẫn đầy đủ nhất.</p>
+</div>
+<script>
+(function(){var a=document.getElementById('t1'),b=document.getElementById('t2'),l=document.getElementById('ls'),d=document.getElementById('dl');
+function show(x){l.style.display=x?'none':'block';d.style.display=x?'block':'none';a.className=x?'':'on';b.className=x?'on':''}
+a.onclick=function(){show(0);return false};b.onclick=function(){show(1);return false};
+if(location.hash=='#dl')show(1)})();
+</script>
 </div></body></html>

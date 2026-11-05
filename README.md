@@ -26,3 +26,7 @@ Copy `decks/toan-co-dai.html`, sửa các `<section class="slide">`, rồi thêm
 ## Decks
 - `decks/lich-su-a1.html` - Lịch sử A1: Hy Lạp & La Mã (theme `gr`/`ro`/`nv` in `assets/classic.css`, art in `assets/art.js`). Ghim đầu `index.html` bằng class `pin`.
 - `decks/toan-co-dai.html` - Toán cổ đại.
+
+## Tải về (pptx)
+
+Tab "Tải về" ở trang chủ trỏ tới `downloads/lich-su-a1.pptx`. Tạo lại: chạy `node tools/extract.js lich-su-a1 18` (Playwright, chụp nền + từng khối), rồi `python3 tools/build.py lich-su-a1 downloads/lich-su-a1.pptx kich-ban.txt` (python-pptx). Chữ là ảnh, không sửa được trong PowerPoint.
