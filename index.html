@@ -23,8 +23,10 @@ a.d span{font-size:15px;opacity:.75}
 <!-- thêm deck mới: copy một thẻ <a class="d"> ở trên -->
 </div>
 <div id="dl">
-<a class="d pin" href="downloads/lich-su-a1.pptx" download><div class="pn">PPTX</div><b>Lịch sử A1: Văn minh Hy Lạp &amp; La Mã</b><span>18 slide &bull; ~13 MB &bull; giữ hiệu ứng xuất hiện từng bước, chuyển slide, nền động, ghi chú thuyết trình</span></a>
-<p class="dl-n">Lưu ý: chữ trong file pptx là ảnh nên không sửa được; không có đếm số chạy và chữ gợn sóng; đường vẽ tay thay bằng hiệu ứng quét. Nên mở bằng PowerPoint để thấy đủ hiệu ứng. Bản HTML vẫn đầy đủ nhất.</p>
+<a class="d pin" href="downloads/lich-su-a1.pptx" download><div class="pn">PPTX</div><b>Lịch sử A1: Văn minh Hy Lạp &amp; La Mã</b><span>18 slide &bull; ~13 MB &bull; giữ hiệu ứng hiện từng bước (fade, quét, zoom), chuyển slide, vòng quay, ghi chú thuyết trình</span></a>
+<a class="d" href="tools/extract.js" download><b>extract.js</b><span>Bước 1 (Node + Playwright): chụp nền và từng khối của deck HTML thành ảnh</span></a>
+<a class="d" href="tools/build.py" download><b>build.py</b><span>Bước 2 (python-pptx): ghép ảnh + hiệu ứng + ghi chú thành file pptx</span></a>
+<p class="dl-n">Lưu ý: chữ trong file pptx là ảnh nên không sửa được; không có đếm số chạy và chữ gợn sóng; đường vẽ tay thay bằng hiệu ứng quét. Nên mở bằng PowerPoint để thấy đủ hiệu ứng. Bản HTML vẫn đầy đủ nhất. Máy yếu: mở bài kèm <code>?lite</code> hoặc bấm nút Lite / phím L.</p>
 </div>
 <script>
 (function(){var a=document.getElementById('t1'),b=document.getElementById('t2'),l=document.getElementById('ls'),d=document.getElementById('dl');

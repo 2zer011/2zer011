@@ -177,8 +177,8 @@
   function init() {
     each(stage.children, function (s) { if (hasCls(s, 'slide')) slides.push(s); });
     var ui_ = d.createElement('div'); ui_.id = 'ui';
-    ui_.innerHTML = '<div id="bar"></div><div id="hud"><button id="bP" title="Trước">&#9664;</button><button id="bN" title="Sau">&#9654;</button><button id="bG" title="Mục lục (G)">&#9776;</button><button id="bF" title="Toàn màn hình (F)">&#9974;</button><span id="num"></span></div>' +
-      '<div id="grid"></div><div id="blank"></div><div id="start"><div>' + (d.title || '') + '<small>Phím &larr; &rarr; / chạm cạnh màn hình / vuốt &bull; F toàn màn hình &bull; G mục lục &bull; B tối màn hình</small><b>&#9654; Bắt đầu trình chiếu</b></div></div>';
+    ui_.innerHTML = '<div id="bar"></div><div id="hud"><button id="bP" title="Trước">&#9664;</button><button id="bN" title="Sau">&#9654;</button><button id="bG" title="Mục lục (G)">&#9776;</button><button id="bL" title="Chế độ nhẹ cho máy yếu (L)">Lite</button><button id="bF" title="Toàn màn hình (F)">&#9974;</button><span id="num"></span></div>' +
+      '<div id="grid"></div><div id="blank"></div><div id="start"><div>' + (d.title || '') + '<small>Phím &larr; &rarr; / chạm cạnh màn hình / vuốt &bull; F toàn màn hình &bull; L chế độ nhẹ &bull; G mục lục &bull; B tối màn hình</small><b>&#9654; Bắt đầu trình chiếu</b></div></div>';
     d.body.appendChild(ui_);
     hud = $('hud'); bar = $('bar'); grid = $('grid'); blank = $('blank'); startEl = $('start'); numEl = $('num');
     each(slides, function (s) { each(s.querySelectorAll('h2'), splitTitle); autoFx(s); prepDraw(s); });
@@ -187,6 +187,11 @@
     $('bG').onclick = toggleGrid; $('bF').onclick = toggleFull;
     grid.onclick = function (e) { e = e || w.event; var t = e.target || e.srcElement, i = t.getAttribute && t.getAttribute('data-i'); if (i !== null && i !== undefined) { grid.style.display = 'none'; go(+i); } else grid.style.display = 'none'; };
     startEl.onclick = begin;
+    function setLite(v) { d.body.className = d.body.className.replace(/\s*\blite\b/, '') + (v ? ' lite' : ''); try { w.localStorage.setItem('lite', v ? '1' : '0'); } catch (x) {} }
+    function isLite() { return /\blite\b/.test(d.body.className); }
+    var lv; try { lv = w.localStorage.getItem('lite'); } catch (x) {}
+    if (/[?&]lite\b/.test(w.location.search) || lv === '1') setLite(true);
+    $('bL').onclick = function () { setLite(!isLite()); poke(); };
 
     /* keyboard */
     d.onkeydown = function (e) {
@@ -195,7 +200,7 @@
       if (k === 39 || k === 40 || k === 32 || k === 34 || k === 13) next();
       else if (k === 37 || k === 38 || k === 33 || k === 8) prev();
       else if (k === 36) go(0); else if (k === 35) go(slides.length - 1);
-      else if (k === 70) toggleFull(); else if (k === 71) toggleGrid(); else if (k === 66 || k === 190) toggleBlank();
+      else if (k === 76) setLite(!isLite()); else if (k === 70) toggleFull(); else if (k === 71) toggleGrid(); else if (k === 66 || k === 190) toggleBlank();
       else if (k === 27) { grid.style.display = 'none'; blank.style.display = 'none'; }
       else return;
       poke(); if (e.preventDefault) e.preventDefault(); return false;

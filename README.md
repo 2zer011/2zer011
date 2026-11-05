@@ -30,3 +30,7 @@ Copy `decks/toan-co-dai.html`, sửa các `<section class="slide">`, rồi thêm
 ## Tải về (pptx)
 
 Tab "Tải về" ở trang chủ trỏ tới `downloads/lich-su-a1.pptx`. Tạo lại: chạy `node tools/extract.js lich-su-a1 18` (Playwright, chụp nền + từng khối), rồi `python3 tools/build.py lich-su-a1 downloads/lich-su-a1.pptx kich-ban.txt` (python-pptx). Chữ là ảnh, không sửa được trong PowerPoint.
+
+## Lite mode
+
+Máy yếu / Win 7: phím `L`, nút Lite ở thanh dưới, hoặc `decks/x.html?lite`. Tắt nền động, glow, blur, bóng; hiệu ứng thành fade 0.2s. Nhớ lựa chọn bằng localStorage.

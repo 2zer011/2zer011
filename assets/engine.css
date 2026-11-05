@@ -180,3 +180,8 @@ width:44px;height:40px;margin-left:6px;cursor:pointer}
 @keyframes fxPop{from{opacity:0;transform:translateY(34px) scale(.95)}to{opacity:1;transform:none}}
 [data-step].on{animation-duration:1s}
 .bgart g,.qgroup,.pop>*{will-change:transform,opacity}
+/* ---- lite mode: body.lite (phím L / nút Lite / ?lite) — máy yếu: bỏ nền động, glow, blur, bóng; hiệu ứng thành fade nhanh ---- */
+.lite *,.lite *:before,.lite *:after{-webkit-animation-duration:.2s!important;animation-duration:.2s!important;-webkit-animation-delay:0s!important;animation-delay:0s!important;-webkit-transition:none!important;transition:none!important;text-shadow:none!important;box-shadow:none!important;-webkit-filter:none!important;filter:none!important}
+.lite .bgart *,.lite .kb,.lite .swing,.lite .fx-float,.lite .fx-glow,.lite .hlbar,.lite .pimg,.lite .star,.lite .rot,.lite .card:after,.lite .sum:after,.lite .shine{-webkit-animation:none!important;animation:none!important}
+.lite .glow,.lite .bgart .fall,.lite .bgart .rise,.lite .bgart .drift,.lite .bgart .tw{display:none!important}
+.lite #bL{background:#b8892b;color:#120a03}

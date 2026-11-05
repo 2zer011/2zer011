@@ -9,6 +9,7 @@ body.iso *{visibility:hidden!important}
 body.iso .u-on,body.iso .u-on *{visibility:visible!important}
 body.iso .slide:before,body.iso .slide:after{display:none!important}
 body.iso .slide,body.iso #stage,body.iso,html.iso{background:transparent!important}
+body.bg [data-step],body.bg [data-step] *{visibility:hidden!important}
 body.bg .slide>*:not(.bgart):not(.glow){visibility:hidden!important}
 body.bg .bgart .spin,body.bg .bgart .spinr,body.bg .bgart .rise,body.bg .bgart .fall,body.bg .bgart .float,body.bg .bgart .tw{visibility:hidden!important}`;
 (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1.5});

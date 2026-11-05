@@ -39,9 +39,7 @@ def entr(t,sp,fx,nt,delay):
         return node(t,22,'entr',8,nt,delay,lambda:vis(t,sp)+aeff(t,sp,'wipe(left)',d))
     if fx in('zoom','swing'):
         return node(t,53,'entr',16,nt,delay,lambda:vis(t,sp)+anim(t,sp,'ppt_w','0f','#ppt_w',600)+anim(t,sp,'ppt_h','0f','#ppt_h',600)+aeff(t,sp,'fade',600))
-    off={'up':('ppt_y','#ppt_y+.12'),'pop':('ppt_y','#ppt_y+.1'),'down':('ppt_y','#ppt_y-.12'),'left':('ppt_x','#ppt_x-.12'),'right':('ppt_x','#ppt_x+.12')}[fx]
-    pid={'up':42,'pop':42,'down':47,'left':2,'right':2}[fx]
-    return node(t,pid,'entr',0,nt,delay,lambda:vis(t,sp)+anim(t,sp,off[0],off[1],'#'+off[0],700)+aeff(t,sp,'fade',700))
+    return node(t,10,'entr',0,nt,delay,lambda:vis(t,sp)+aeff(t,sp,'fade',600))
 def exit_(t,sp,delay):
     return node(t,10,'exit',0,'withEffect',delay,lambda:aeff(t,sp,'fade',300,'out')+vis(t,sp,'hidden',299))
 def spin(t,sp,delay,rev,dur=60000):
@@ -72,6 +70,7 @@ for sl in layout:
         li+=1
         if l['t']=='spin':
             c=l['clip']; p=pic(l['file'],*c,'Quay %d'%li); auto.append(('spin',p.shape_id,0,l['rev']))
+        elif l['t'] in('fall','rise'): continue  # shortcut: đốm rơi/chữ bay gây nhiễu + nặng, bỏ
         elif l['t']=='fall':
             x,y,w,h=l['rect']; w=max(w,6);h=max(h,4)
             sh=s.shapes.add_shape(MSO_SHAPE.OVAL,Emu(int(x*PX)),Emu(int(-30*PX)),Emu(int(w*PX)),Emu(int(h*PX)))
