@@ -169,6 +169,15 @@
   }
   function toggleBlank() { blank.style.display = blank.style.display === 'block' ? 'none' : 'block'; }
 
+  /* letter split: <h1 class="split"> -> span.ch per character, staggered */
+  (function () {
+    var els = d.querySelectorAll ? d.querySelectorAll('.split') : [], i, n = 0;
+    function walk(el) { var kids = [], k, c, t, j, sp, fr; for (k = 0; k < el.childNodes.length; k++) kids.push(el.childNodes[k]);
+      for (k = 0; k < kids.length; k++) { c = kids[k];
+        if (c.nodeType === 3) { t = c.nodeValue; fr = d.createDocumentFragment(); for (j = 0; j < t.length; j++) { sp = d.createElement('span'); sp.className = 'ch'; sp.style.animationDelay = (.25 + (n++) * .045) + 's'; sp.appendChild(d.createTextNode(t.charAt(j))); fr.appendChild(sp); } el.replaceChild(fr, c); }
+        else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c); } }
+    for (i = 0; i < els.length; i++) { n = 0; walk(els[i]); }
+  })();
   function begin() {
     startEl.style.display = 'none'; goFull(); fit(); poke();
     setTimeout(fit, 300);

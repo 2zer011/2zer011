@@ -37,4 +37,6 @@ Máy yếu / Win 7: phím `L`, nút Lite ở thanh dưới, hoặc `decks/x.html
 
 ## Deck A1 (Phục hưng)
 
-Chỉ còn khoa học-kĩ thuật / tư tưởng / ý nghĩa. Chuyển slide mới: iris, curtain, drift, diag, warp, blinds, book (engine.css). Nền mới: `rn` vũ trụ, `rm` xưởng cơ khí, `rl` ánh nến (art.js + renaissance.css). pptx vẫn là bản Hy Lạp & La Mã cũ.
+Chỉ còn khoa học-kĩ thuật / tư tưởng / ý nghĩa. Chuyển slide mới: iris, curtain, drift, diag, warp, blinds, book (engine.css). Nền mới: `rn` vũ trụ, `rm` xưởng cơ khí, `rl` ánh nến (art.js + renaissance.css). pptx đã làm lại cho bản Phục hưng (`node tools/extract.js lich-su-a1 7` rồi `python3 tools/build.py lich-su-a1 downloads/lich-su-a1.pptx kich-ban.txt`).
+
+Deck Toán cũng có pptx: `node tools/extract.js toan-co-dai 19` rồi `python3 tools/build.py toan-co-dai downloads/toan-co-dai.pptx`. Deck Toán đã dùng chuyển slide mới, chữ rơi, thẻ nghiêng 3D, nền thêm đèn lồng / bụi / sao.

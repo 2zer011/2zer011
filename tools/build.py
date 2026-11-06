@@ -11,7 +11,7 @@ NS='xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a
 layout=json.load(open(OUT+'/layout.json'))
 html=open('/root/2zer011-slide/decks/%s.html'%DECK,encoding='utf-8').read()
 trans=re.findall(r'<section class="slide [^"]*" data-title="[^"]*" data-t="(\w+)"',html)
-TR={'slide':'<p:push dir="l"/>','fade':'<p:fade/>','zoom':'<p:zoom dir="in"/>','flip':'<p:split orient="vert" dir="out"/>','rise':'<p:push dir="u"/>','spin':'<p:wheel spokes="4"/>','blur':'<p:fade/>'}
+TR={'iris':'<p:circle/>','curtain':'<p:split orient="vert" dir="out"/>','drift':'<p:fade/>','diag':'<p:strips dir="rd"/>','warp':'<p:zoom dir="in"/>','blinds':'<p:blinds dir="horz"/>','book':'<p:cover dir="l"/>','slide':'<p:push dir="l"/>','fade':'<p:fade/>','zoom':'<p:zoom dir="in"/>','flip':'<p:split orient="vert" dir="out"/>','rise':'<p:push dir="u"/>','spin':'<p:wheel spokes="4"/>','blur':'<p:fade/>'}
 # notes
 notes={}
 if len(sys.argv)>3 and os.path.exists(sys.argv[3]):
@@ -37,7 +37,7 @@ def entr(t,sp,fx,nt,delay):
     if fx in('reveal','wipe','draw'):
         d={'reveal':900,'wipe':900,'draw':1800}[fx]
         return node(t,22,'entr',8,nt,delay,lambda:vis(t,sp)+aeff(t,sp,'wipe(left)',d))
-    if fx in('zoom','swing'):
+    if fx in('zoom','swing','slam'):
         return node(t,53,'entr',16,nt,delay,lambda:vis(t,sp)+anim(t,sp,'ppt_w','0f','#ppt_w',600)+anim(t,sp,'ppt_h','0f','#ppt_h',600)+aeff(t,sp,'fade',600))
     return node(t,10,'entr',0,nt,delay,lambda:vis(t,sp)+aeff(t,sp,'fade',600))
 def exit_(t,sp,delay):
@@ -69,7 +69,13 @@ for sl in layout:
     for l in sl['loops']:
         li+=1
         if l['t']=='spin':
-            c=l['clip']; p=pic(l['file'],*c,'Quay %d'%li); auto.append(('spin',p.shape_id,0,l['rev']))
+            c=l['clip']; f=l['file']
+            if l.get('sq'):  # pad ảnh thành hình vuông quanh tâm quay
+                from PIL import Image
+                im=Image.open(d+f); k=im.width/c[2]; q=l['sq']
+                cv=Image.new('RGBA',(max(1,round(q[2]*k)),max(1,round(q[3]*k))),(0,0,0,0)); cv.paste(im,(round((c[0]-q[0])*k),round((c[1]-q[1])*k)))
+                f='sq_'+f; cv.save(d+f); c=q
+            p=pic(f,*c,'Quay %d'%li); auto.append(('spin',p.shape_id,0,l['rev'],int(l.get('dur',60000))))
         elif l['t'] in('fall','rise'): continue  # shortcut: đốm rơi/chữ bay gây nhiễu + nặng, bỏ
         elif l['t']=='fall':
             x,y,w,h=l['rect']; w=max(w,6);h=max(h,4)
@@ -104,7 +110,7 @@ for sl in layout:
         for a in auto:
             if a[0]=='entr': eff+=entr(t,a[1],a[3],'withEffect',a[2])
             elif a[0]=='exit': eff+=exit_(t,a[1],a[2])
-            elif a[0]=='spin': eff+=spin(t,a[1],a[2],a[3])
+            elif a[0]=='spin': eff+=spin(t,a[1],a[2],a[3],a[4])
             elif a[0]=='fall': eff+=motion(t,a[1],a[2],'M 0 0 L %.3f 1.15 E'%(0.04+0.01*(a[3]%3)),9000+700*a[3],'0.02','0.575')
             elif a[0]=='rise': eff+=motion(t,a[1],a[2],'M 0 0 L 0 -0.85 E',12000+900*a[3],'0','-0.425')
         groups+=group(t,eff,True)

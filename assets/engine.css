@@ -220,3 +220,21 @@ width:44px;height:40px;margin-left:6px;cursor:pointer}
 @keyframes artMarch{to{stroke-dashoffset:-36}}
 .bgart .piston{animation:artPiston 1.6s ease-in-out infinite alternate}
 @keyframes artPiston{from{transform:translateY(0)}to{transform:translateY(-34px)}}
+
+/* ---- v16: richer entrance fx (tilt / blurin / slam) + letter split ---- */
+.cur .fx-tilt:not([data-step]),.on.fx-tilt{animation:fxTilt .9s cubic-bezier(.2,.9,.2,1) both}
+.cur [data-step] .fx-tilt{animation:none}
+.cur [data-step].on .fx-tilt{animation:fxTilt .9s cubic-bezier(.2,.9,.2,1) both}
+.cur .fx-blurin:not([data-step]),.on.fx-blurin{animation:fxBlurIn 1.1s ease-out both}
+.cur [data-step] .fx-blurin{animation:none}
+.cur [data-step].on .fx-blurin{animation:fxBlurIn 1.1s ease-out both}
+.cur .fx-slam:not([data-step]),.on.fx-slam{animation:fxSlam .9s cubic-bezier(.2,1.5,.4,1) both}
+.cur [data-step] .fx-slam{animation:none}
+.cur [data-step].on .fx-slam{animation:fxSlam .9s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes fxTilt{from{opacity:0;transform:perspective(900px) rotateX(62deg) translateY(50px);-webkit-filter:blur(6px);filter:blur(6px)}to{opacity:1;transform:none;-webkit-filter:blur(0);filter:blur(0)}}
+@keyframes fxBlurIn{from{opacity:0;transform:scale(1.15);-webkit-filter:blur(18px);filter:blur(18px)}to{opacity:1;transform:none;-webkit-filter:blur(0);filter:blur(0)}}
+@keyframes fxSlam{from{opacity:0;transform:scale(2.2)}to{opacity:1;transform:none}}
+.split .ch{display:inline-block;white-space:pre}
+.cur .split .ch{animation:chIn .8s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes chIn{from{opacity:0;transform:translateY(-60px) rotate(-14deg) scale(1.5);-webkit-filter:blur(8px);filter:blur(8px)}to{opacity:1;transform:none;-webkit-filter:blur(0);filter:blur(0)}}
+.rn .card.on:not(.abs),.rn .card[data-step].on{animation-name:fxPop}

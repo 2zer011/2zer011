@@ -166,6 +166,16 @@
     return s + '</svg>';
   }
   var T = { rn: rn, rm: rm, rl: rl, eg: eg, cn: cn, 'in': ind, dark: dk, gr: gr, ro: ro };
+
+  /* ---- v16: extra live layers for old themes ---- */
+  function lant(i, col) { var x = 90 + rnd(i, 1100, 47); return '<g class="rise" style="animation-delay:-' + (i * 3) + 's;animation-duration:' + (18 + i % 3 * 4) + 's"><g transform="translate(' + x + ',700)"><circle r="34" fill="' + col + '" fill-opacity=".14"/><rect x="-13" y="-18" width="26" height="34" rx="9" fill="' + col + '" fill-opacity=".7"/><path d="M-7 -20h14M0 16v14" stroke="#ffe29a" stroke-width="2" fill="none"/></g></g>'; }
+  var EX = {
+    eg: function () { return par(26, 61, '#d4a437', .6, 'par par2', 120) + par(16, 17, '#fff0c8', .8, 'par par3', 80) + f('#ffd98a', .08, '<circle cx="1120" cy="130" r="150" class="tw" style="animation-duration:7s"/>'); },
+    cn: function () { return R(5, function (i) { return lant(i, '#d9381e'); }) + par(18, 33, '#ffe29a', .7, 'par par3', 100); },
+    'in': function () { return par(22, 19, '#ffd36a', .7, 'par par2', 110) + f('#ffe29a', .9, R(16, function (i) { return '<circle cx="' + (60 + rnd(i, 1160, 43)) + '" cy="' + (180 + rnd(i, 460, 29)) + '" r="2.6" class="tw" style="animation-duration:' + (2 + i % 4) + 's;animation-delay:-' + i * .5 + 's"/>'; })); },
+    dark: function () { return par(46, 53, '#9fb4ff', .5, 'par par1', 220) + par(30, 71, '#fff0c8', .8, 'par par2', 140); }
+  };
+  ['eg', 'cn', 'in', 'dark'].forEach(function (k) { var o = T[k]; if (o) T[k] = function () { return o().replace(/<\/svg>$/, EX[k]() + '</svg>'); }; });
   function theme(el) { var c = ' ' + el.className + ' ', k; for (k in T) if (c.indexOf(' ' + k + ' ') > -1) return k; return 'eg'; }
   function run() {
     var s = d.getElementById('stage'), i, e, t, w;

@@ -11,7 +11,7 @@ body.iso .slide:before,body.iso .slide:after{display:none!important}
 body.iso .slide,body.iso #stage,body.iso,html.iso{background:transparent!important}
 body.bg [data-step],body.bg [data-step] *{visibility:hidden!important}
 body.bg .slide>*:not(.bgart):not(.glow){visibility:hidden!important}
-body.bg .bgart .spin,body.bg .bgart .spinr,body.bg .bgart .rise,body.bg .bgart .fall,body.bg .bgart .float,body.bg .bgart .tw{visibility:hidden!important}`;
+body.bg .bgart .spin,body.bg .bgart .spinr,body.bg .bgart .rise,body.bg .bgart .fall,body.bg .bgart .float{visibility:hidden!important}`;
 (async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1.5});
 const errs=[];p.on('pageerror',e=>errs.push(e.message));
 const N=+process.argv[3]||18;const all=[];
@@ -24,7 +24,7 @@ for(let n=1;n<=N;n++){
   var steps=[].slice.call(s.querySelectorAll('[data-step]')),units=[],uid=0;
   function cls(e){return e.getAttribute('class')||''}
   function fxOf(e,stp){
-    var k=cls(e),m=k.match(/fx-(up|down|left|right|zoom|reveal|fade|swing|wipe|float)/),d=k.match(/(^|\s)d(\d)(\s|$)/);
+    var k=cls(e),m=k.match(/fx-(up|down|left|right|zoom|reveal|fade|swing|wipe|float|tilt|blurin|slam)/),d=k.match(/(^|\s)d(\d)(\s|$)/);
     var D=[0,.2,.5,.8,1.1,1.5,2,2.6,3.3];var dl=d?D[+d[2]]:0;
     var hasDraw=e.querySelector&&e.querySelector('.draw'),hasFx=e.querySelector&&e.querySelector('[class*="fx-"]');
     if(m)return{fx:m[1],delay:stp?0:dl};
@@ -45,7 +45,7 @@ for(let n=1;n<=N;n++){
   walk(s,0);
   // loops
   var loops=[];
-  [].forEach.call(s.querySelectorAll('.bgart .spin,.bgart .spinr'),function(g){var r=g.getBoundingClientRect();g.setAttribute('data-uid','L'+(++uid));loops.push({t:'spin',uid:'L'+uid,rect:[r.left,r.top,r.width,r.height],rev:/spinr/.test(cls(g))})});
+  [].forEach.call(s.querySelectorAll('.bgart .spin,.bgart .spinr'),function(g){var r=g.getBoundingClientRect(),o=(getComputedStyle(g).transformOrigin||'').match(/[-\d.]+/g)||[],ox=+o[0],oy=+o[1],sq=null;if(isFinite(ox)&&isFinite(oy)){var h=Math.max(Math.abs(r.left-ox),Math.abs(r.right-ox),Math.abs(r.top-oy),Math.abs(r.bottom-oy))+4;sq=[ox-h,oy-h,2*h,2*h]}var du=parseFloat(g.style.animationDuration)||(/spinr/.test(cls(g))?120:90);g.setAttribute('data-uid','L'+(++uid));loops.push({t:'spin',uid:'L'+uid,rect:[r.left,r.top,r.width,r.height],sq:sq,dur:du*1000,rev:/spinr/.test(cls(g))})});
   [].forEach.call(s.querySelectorAll('.bgart .fall'),function(g,i){if(i>=7)return;var r=g.getBoundingClientRect(),cs=getComputedStyle(g);loops.push({t:'fall',rect:[r.left,r.top,r.width,r.height],fill:cs.fill,op:parseFloat(cs.fillOpacity)||.5,i:i})});
   [].forEach.call(s.querySelectorAll('.bgart .rise'),function(g,i){if(i>=6)return;var r=g.getBoundingClientRect(),cs=getComputedStyle(g);loops.push({t:'rise',rect:[r.left,r.top,r.width,r.height],txt:g.textContent,fill:cs.fill,op:parseFloat(cs.fillOpacity)||.25,size:parseFloat(cs.fontSize),i:i})});
   return{units:units,loops:loops,hasMorph:!!s.querySelector('.morph')};
