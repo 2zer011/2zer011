@@ -185,3 +185,38 @@ width:44px;height:40px;margin-left:6px;cursor:pointer}
 .lite .bgart *,.lite .kb,.lite .swing,.lite .fx-float,.lite .fx-glow,.lite .hlbar,.lite .pimg,.lite .star,.lite .rot,.lite .card:after,.lite .sum:after,.lite .shine{-webkit-animation:none!important;animation:none!important}
 .lite .glow,.lite .bgart .fall,.lite .bgart .rise,.lite .bgart .drift,.lite .bgart .tw{display:none!important}
 .lite #bL{background:#b8892b;color:#120a03}
+/* ---- v14: cinematic transitions (iris / curtain / drift / diag) + smoothness ---- */
+.slide.cur,.slide.leaving{will-change:transform,opacity;-webkit-transform:translateZ(0)}
+.in-iris{animation:tIrisIn 1.1s cubic-bezier(.65,0,.25,1) both}.out-iris{animation:tIrisOut 1.1s ease both}
+.in-curtain{animation:tCurtainIn 1s cubic-bezier(.7,0,.2,1) both}.out-curtain{animation:tCurtainOut 1s ease both}
+.in-drift{animation:tDriftIn 1.1s cubic-bezier(.22,.8,.2,1) both}.out-drift{animation:tDriftOut 1.1s cubic-bezier(.4,0,.6,1) both}
+.in-diag{animation:tDiagIn 1s cubic-bezier(.65,0,.25,1) both}.out-diag{animation:tDiagOut 1s ease both}
+@keyframes tIrisIn{from{opacity:.4;clip-path:circle(0% at 50% 50%);-webkit-clip-path:circle(0% at 50% 50%)}to{opacity:1;clip-path:circle(75% at 50% 50%);-webkit-clip-path:circle(75% at 50% 50%)}}
+@keyframes tIrisOut{from{opacity:1;transform:scale(1)}to{opacity:.3;transform:scale(1.12)}}
+@keyframes tCurtainIn{from{opacity:.5;clip-path:inset(0 50% 0 50%);-webkit-clip-path:inset(0 50% 0 50%)}to{opacity:1;clip-path:inset(0 0 0 0);-webkit-clip-path:inset(0 0 0 0)}}
+@keyframes tCurtainOut{from{opacity:1;transform:scale(1)}to{opacity:.35;transform:scale(.94)}}
+@keyframes tDriftIn{from{opacity:0;transform:scale(1.18) translateX(60px)}to{opacity:1;transform:none}}
+@keyframes tDriftOut{from{opacity:1;transform:none}to{opacity:0;transform:scale(.9) translateX(-60px)}}
+@keyframes tDiagIn{from{opacity:.5;clip-path:polygon(0 0,0 0,0 0);-webkit-clip-path:polygon(0 0,0 0,0 0)}to{opacity:1;clip-path:polygon(0 0,260% 0,0 260%);-webkit-clip-path:polygon(0 0,260% 0,0 260%)}}
+@keyframes tDiagOut{from{opacity:1}to{opacity:.4;transform:translate(-4%,-4%) scale(1.05)}}
+.rev.in-drift{animation-name:tDriftInR}.rev.out-drift{animation-name:tDriftOutR}
+@keyframes tDriftInR{from{opacity:0;transform:scale(.9) translateX(-60px)}to{opacity:1;transform:none}}
+@keyframes tDriftOutR{from{opacity:1;transform:none}to{opacity:0;transform:scale(1.18) translateX(60px)}}
+/* ---- v15: more transitions (warp / blinds / book) + art keyframes ---- */
+.in-warp{animation:tWarpIn 1.2s cubic-bezier(.2,.7,.2,1) both}.out-warp{animation:tWarpOut 1.2s cubic-bezier(.6,0,.9,.4) both}
+@keyframes tWarpIn{from{opacity:0;transform:scale(.55);-webkit-filter:blur(16px);filter:blur(16px)}to{opacity:1;transform:none;-webkit-filter:blur(0);filter:blur(0)}}
+@keyframes tWarpOut{from{opacity:1;transform:none}to{opacity:0;transform:scale(2.6);-webkit-filter:blur(14px);filter:blur(14px)}}
+.in-blinds{-webkit-mask-image:linear-gradient(#000,#000);mask-image:linear-gradient(#000,#000);-webkit-mask-repeat:repeat-y;mask-repeat:repeat-y;animation:tBlindsIn 1.1s cubic-bezier(.65,0,.3,1) both}.out-blinds{animation:tBlindsOut 1.1s ease both}
+@keyframes tBlindsIn{from{-webkit-mask-size:100% 0;mask-size:100% 0}to{-webkit-mask-size:100% 120px;mask-size:100% 120px}}
+@keyframes tBlindsOut{from{opacity:1}to{opacity:.3;transform:scale(.96)}}
+.out-book{z-index:3;-webkit-transform-origin:0 50%;transform-origin:0 50%;animation:tBookOut 1.3s cubic-bezier(.5,0,.3,1) both}.in-book{animation:tBookIn 1.3s ease both}
+@keyframes tBookOut{0%{transform:perspective(2200px) rotateY(0);opacity:1}70%{opacity:1}100%{transform:perspective(2200px) rotateY(-110deg);opacity:0}}
+@keyframes tBookIn{from{opacity:.5;transform:scale(.94)}to{opacity:1;transform:none}}
+.bgart .par{animation:artPar 200s linear infinite}.bgart .par2{animation-name:artPar}
+@keyframes artPar{to{transform:translateX(-1280px)}}
+.bgart .comet{animation:artComet 14s ease-in infinite;opacity:0}
+@keyframes artComet{0%{transform:translate(-100px,-60px);opacity:0}8%{opacity:1}55%{opacity:1}75%,100%{transform:translate(1500px,640px);opacity:0}}
+.bgart .march{animation:artMarch 1.2s linear infinite}
+@keyframes artMarch{to{stroke-dashoffset:-36}}
+.bgart .piston{animation:artPiston 1.6s ease-in-out infinite alternate}
+@keyframes artPiston{from{transform:translateY(0)}to{transform:translateY(-34px)}}

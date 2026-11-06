@@ -108,7 +108,64 @@
     s += mg(c, ['A', 'B', 'C', 'D', 'I', 'V', 'X', 'L', 'M', 'SPQR', 'AVE', 'Ω']); return s + '</svg>';
   }
 
-  var T = { eg: eg, cn: cn, 'in': ind, dark: dk, gr: gr, ro: ro };
+
+  /* ---- Phục hưng: rn = vũ trụ / thiên văn, rm = xưởng cơ khí, rl = ánh nến & tri thức ---- */
+  function stars(n, c) { return f(c, .9, R(n, function (i) { return '<circle cx="' + (20 + rnd(i, 1240, 53)) + '" cy="' + (16 + rnd(i, 560, 29)) + '" r="' + (1 + i % 3 * .7) + '" class="tw" style="animation-delay:-' + (i * .37) + 's;animation-duration:' + (2 + i % 5) + 's"/>'; })); }
+  function orbit(cx, cy, r, pr, col, dur, ph) { return g(col, .22, 1.5, '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '"/>') + '<g class="spin" style="transform-origin:' + cx + 'px ' + cy + 'px;animation-duration:' + dur + 's;animation-delay:-' + ph + 's"><circle cx="' + (cx + r) + '" cy="' + cy + '" r="' + pr + '" fill="' + col + '" fill-opacity=".85"/></g>'; }
+  function gear(cx, cy, r, n, col, o, cls, dur) {
+    var t = '', i; for (i = 0; i < n; i++) t += '<rect x="' + (cx - r * .1) + '" y="' + (cy - r * 1.22) + '" width="' + (r * .2) + '" height="' + (r * .3) + '" transform="rotate(' + (i * 360 / n) + ' ' + cx + ' ' + cy + ')"/>';
+    return g(col, o, 2.2, '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '"/><circle cx="' + cx + '" cy="' + cy + '" r="' + (r * .32) + '"/>' + t + R(3, function (k) { return '<path d="M' + cx + ' ' + cy + 'L' + (cx + r * .9 * Math.cos(k * 2.094)) + ' ' + (cy + r * .9 * Math.sin(k * 2.094)) + '"/>'; }), 'class="' + cls + '" style="transform-origin:' + cx + 'px ' + cy + 'px;animation-duration:' + dur + 's"');
+  }
+  function par(n, seed, c, op, cls, dur) { var t = R(n, function (i) { return '<circle cx="' + (10 + rnd(i, 1260, seed)) + '" cy="' + (10 + rnd(i, 700, seed + 13)) + '" r="' + (.8 + i % 3 * .6) + '"/>'; }); return '<g fill="' + c + '" fill-opacity="' + op + '" class="' + cls + '" style="animation-duration:' + dur + 's">' + t + '<g transform="translate(1280,0)">' + t + '</g></g>'; }
+  function comet(x, y, dl, du) { return '<g class="comet" style="animation-delay:-' + dl + 's;animation-duration:' + du + 's"><g transform="translate(' + x + ',' + y + ') rotate(24)"><path d="M0 0L-190 0" stroke="#ffe6a8" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M0 0L-90 0" stroke="#fff" stroke-opacity=".9" stroke-width="2" stroke-linecap="round" fill="none"/><circle r="5" fill="#fff"/><circle r="12" fill="#ffe6a8" fill-opacity=".3"/></g></g>'; }
+  function rn() {
+    var s = H;
+    s += par(46, 53, '#9fb4ff', .55, 'par par1', 220) + par(34, 71, '#fff0c8', .8, 'par par2', 140) + par(22, 29, '#fff', 1, 'par par3', 90);
+    s += stars(30, '#fff0c8');
+    /* constellation */
+    var P = [[90, 150], [180, 110], [270, 160], [330, 95], [420, 140]];
+    s += g('#9fb4ff', .28, 1.5, '<path d="M' + P.map(function (p) { return p.join(' '); }).join('L') + '"/>', 'class="tw" style="animation-duration:6s"') + f('#fff', .9, P.map(function (p, i) { return '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="3.5" class="tw" style="animation-delay:-' + i + 's"/>'; }).join(''));
+    /* heliocentric system */
+    s += orbit(900, 330, 90, 5, '#8fd0ff', 18, 3) + orbit(900, 330, 150, 7, '#f0b64a', 32, 9) + orbit(900, 330, 215, 6, '#ff8f6a', 52, 20) + orbit(900, 330, 290, 8, '#c9a2ff', 80, 40) + orbit(900, 330, 370, 5, '#9fe8c8', 120, 70);
+    s += '<circle cx="900" cy="330" r="70" fill="#ffd36a" fill-opacity=".07" class="tw" style="animation-delay:-1.5s"/><circle cx="900" cy="330" r="46" fill="#ffd36a" fill-opacity=".16" class="tw"/><circle cx="900" cy="330" r="26" fill="#ffd36a" fill-opacity=".95"/><circle cx="893" cy="323" r="8" fill="#fff6d0" fill-opacity=".7"/>';
+    /* saturn */
+    s += '<g class="sway" style="transform-origin:1130px 610px;animation-duration:10s"><circle cx="1130" cy="610" r="30" fill="#e6c27a" fill-opacity=".55"/><ellipse cx="1130" cy="610" rx="58" ry="12" transform="rotate(-18 1130 610)" fill="none" stroke="#f5d98a" stroke-opacity=".7" stroke-width="3"/></g>';
+    s += comet(140, 40, 0, 13) + comet(520, -30, 6, 17) + comet(60, 220, 11, 21);
+    s += g('#d4a437', .26, 2, '<path d="M0 28H1280M0 692H1280" stroke-dasharray="3 12"/>');
+    return s + '</svg>';
+  }
+  function rm() {
+    var c = '#7fd6e8', s = H;
+    s += g(c, .1, 1, R(33, function (i) { return '<path d="M' + (i * 40) + ' 0V720"/>'; }) + R(19, function (i) { return '<path d="M0 ' + (i * 40) + 'H1280"/>'; }));
+    /* big compass circle (blueprint) */
+    s += g(c, .18, 1.5, '<circle cx="640" cy="360" r="300"/><circle cx="640" cy="360" r="220" stroke-dasharray="6 10"/><path d="M640 40V680M320 360H960" stroke-dasharray="4 10"/>', 'class="spin" style="transform-origin:640px 360px;animation-duration:240s"');
+    s += gear(1080, 170, 74, 14, '#f5d98a', .55, 'spin', 40) + gear(1204, 276, 44, 9, '#7fd6e8', .55, 'spinr', 24) + gear(980, 300, 36, 8, '#7fd6e8', .45, 'spinr', 20) + gear(150, 590, 80, 16, '#f5d98a', .45, 'spin', 46) + gear(266, 520, 46, 10, '#7fd6e8', .45, 'spinr', 26) + gear(120, 150, 52, 12, '#f5d98a', .35, 'spinr', 34) + gear(224, 206, 30, 8, '#7fd6e8', .35, 'spin', 20);
+    /* belt between gears */
+    s += g('#f5d98a', .4, 3, '<path d="M1080 96H1204M1080 244H1204" stroke-dasharray="10 8" class="march"/>');
+    /* pistons */
+    s += g(c, .4, 3, R(4, function (i) { return '<rect x="' + (440 + i * 96) + '" y="470" width="40" height="70" rx="4"/><g class="piston" style="animation-delay:-' + (i * .55) + 's"><rect x="' + (448 + i * 96) + '" y="420" width="24" height="60" fill="' + c + '" fill-opacity=".25"/></g>'; }));
+    /* waterwheel */
+    s += g('#7fd6e8', .45, 2.5, '<circle cx="1120" cy="520" r="86"/><circle cx="1120" cy="520" r="10"/>' + R(12, function (i) { return '<path d="M1120 520V434" transform="rotate(' + (i * 30) + ' 1120 520)"/><rect x="1110" y="428" width="20" height="26" transform="rotate(' + (i * 30) + ' 1120 520)"/>'; }), 'class="spin" style="transform-origin:1120px 520px;animation-duration:30s"');
+    s += g('#7fd6e8', .35, 3, '<path d="' + wave(640, 1400) + '"/>', 'class="drift"') + g('#7fd6e8', .22, 3, '<path d="' + wave(656, 1400) + '"/>', 'class="drift" style="animation-duration:8s"');
+    s += f('#ffd98a', .8, R(22, function (i) { return '<circle cx="' + (50 + rnd(i, 1180, 41)) + '" cy="' + (180 + rnd(i, 400, 19)) + '" r="' + (1.5 + i % 3) + '" class="float" style="animation-delay:-' + (i * .6) + 's"/>'; }));
+    return s + '</svg>';
+  }
+  function rl() {
+    var c = '#e6b95a', s = H;
+    s += g(c, .3, 2, R(46, function (i) { return '<path d="M' + (i * 28) + ' 28q14 -14 28 0"/>'; }) + R(46, function (i) { return '<path d="M' + (i * 28) + ' 692q14 14 28 0"/>'; }));
+    /* bokeh */
+    s += f('#ffb84a', .13, R(9, function (i) { return '<circle cx="' + (80 + rnd(i, 1100, 59)) + '" cy="' + (120 + rnd(i, 460, 31)) + '" r="' + (26 + i % 4 * 14) + '" class="cloud" style="animation-duration:' + (14 + i * 3) + 's;animation-delay:-' + (i * 2) + 's"/>'; }));
+    s += g('#ffe29a', .13, 6, R(11, function (i) { return '<path d="M640 -80L' + (-200 + i * 170) + ' 520"/>'; }), 'class="sway" style="transform-origin:640px -80px;animation-duration:9s"');
+    /* candles */
+    function candle(x, h, dl) { return g(c, .55, 3, '<path d="M' + (x - 17) + ' 660V' + (660 - h) + 'H' + (x + 17) + 'V660M' + (x - 27) + ' 660H' + (x + 27) + '"/>') + '<g class="sway" style="transform-origin:' + x + 'px ' + (660 - h) + 'px;animation-duration:' + (1.8 + dl) + 's"><path d="M' + x + ' ' + (604 - h) + 'Q' + (x - 21) + ' ' + (634 - h) + ' ' + x + ' ' + (658 - h) + 'Q' + (x + 21) + ' ' + (634 - h) + ' ' + x + ' ' + (604 - h) + 'Z" fill="#ffb84a" fill-opacity=".92" class="tw" style="animation-duration:1.4s;animation-delay:-' + dl + 's"/><path d="M' + x + ' ' + (624 - h) + 'Q' + (x - 9) + ' ' + (638 - h) + ' ' + x + ' ' + (654 - h) + 'Q' + (x + 9) + ' ' + (638 - h) + ' ' + x + ' ' + (624 - h) + 'Z" fill="#fff3c4"/><circle cx="' + x + '" cy="' + (630 - h) + '" r="44" fill="#ffb84a" fill-opacity=".1" class="tw"/></g>'; }
+    s += candle(135, 120, 0) + candle(215, 80, .6);
+    /* open book + page flutter */
+    s += g(c, .4, 2.5, '<path d="M1000 640Q1070 612 1140 640V560Q1070 532 1000 560Z"/><path d="M1140 640Q1210 612 1270 640V560Q1210 532 1140 560Z"/><path d="M1140 640V560"/>' + R(4, function (i) { return '<path d="M1016 ' + (572 + i * 14) + 'Q1070 ' + (552 + i * 14) + ' 1124 ' + (572 + i * 14) + '" stroke-opacity=".5"/>'; }));
+    s += f('#ffd98a', .8, R(34, function (i) { return '<circle cx="' + (30 + rnd(i, 1220, 37)) + '" cy="' + (140 + rnd(i, 520, 23)) + '" r="' + (1.5 + i % 3) + '" class="float" style="animation-delay:-' + (i * .6) + 's;animation-duration:' + (7 + i % 4 * 2) + 's"/>'; }));
+    s += f('#e6b95a', .55, R(8, function (i) { return '<path d="M' + (80 + rnd(i, 1100, 61)) + ' -10c8 8 14 18 0 34c-10 -14 -8 -26 0 -34Z" class="fall" style="animation-delay:-' + (i * 2) + 's;animation-duration:' + (15 + i * 2) + 's"/>'; }));
+    return s + '</svg>';
+  }
+  var T = { rn: rn, rm: rm, rl: rl, eg: eg, cn: cn, 'in': ind, dark: dk, gr: gr, ro: ro };
   function theme(el) { var c = ' ' + el.className + ' ', k; for (k in T) if (c.indexOf(' ' + k + ' ') > -1) return k; return 'eg'; }
   function run() {
     var s = d.getElementById('stage'), i, e, t, w;

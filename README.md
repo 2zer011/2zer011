@@ -34,3 +34,7 @@ Tab "Tải về" ở trang chủ trỏ tới `downloads/lich-su-a1.pptx`. Tạo 
 ## Lite mode
 
 Máy yếu / Win 7: phím `L`, nút Lite ở thanh dưới, hoặc `decks/x.html?lite`. Tắt nền động, glow, blur, bóng; hiệu ứng thành fade 0.2s. Nhớ lựa chọn bằng localStorage.
+
+## Deck A1 (Phục hưng)
+
+Chỉ còn khoa học-kĩ thuật / tư tưởng / ý nghĩa. Chuyển slide mới: iris, curtain, drift, diag, warp, blinds, book (engine.css). Nền mới: `rn` vũ trụ, `rm` xưởng cơ khí, `rl` ánh nến (art.js + renaissance.css). pptx vẫn là bản Hy Lạp & La Mã cũ.
