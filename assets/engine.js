@@ -141,6 +141,7 @@
     resetSteps(nu, back);
     nu.className += ' cur in-' + type + (back ? ' rev' : '');
     if (old) { old.className += ' leaving out-' + type + (back ? ' rev' : ''); }
+    try { var cs = w.getComputedStyle(nu), bs = d.body.style; bs.backgroundColor = cs.backgroundColor; bs.backgroundImage = cs.backgroundImage; bs.backgroundSize = '100% 100%'; d.documentElement.style.background = 'none'; } catch (x) {} /* lấp 2 mép đen bằng nền của slide */
     var o = old; cur = n; ui();
     clearTimeout(go.t);
     go.t = setTimeout(function () {
