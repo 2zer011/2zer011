@@ -1,140 +1,90 @@
 KỊCH BẢN THUYẾT TRÌNH: THÀNH TỰU TOÁN HỌC CỦA CÁC NỀN VĂN MINH CỔ ĐẠI
-4 người · mỗi người khoảng 2–2,5 phút, cả bài khoảng 10 phút · [Bấm k] = bấm chuyển bước trên slide
+3 người · mỗi người khoảng 2 phút, cả bài khoảng 6–7 phút · [Bấm k] = bấm chuyển bước trên slide
 
-==== NGƯỜI 1: Mở đầu + Ai Cập (slide 1–4) + kết bài (slide 19) (~356 chữ, ~2.4 phút) ====
+==== NGƯỜI 1: Mở đầu + Ai Cập (slide 1–5) (~312 chữ, ~2,1 phút) ====
 
 [SLIDE 1: Mở đầu] (0 bấm)
-Em chào cô và các bạn. Hôm nay nhóm em trình bày thành tựu toán học của các nền văn minh cổ đại, qua ba nơi: Ai Cập, Trung Hoa và Ấn Độ. Nhóm có bốn bạn, mỗi bạn phụ trách một phần. Em xin bắt đầu với Ai Cập.
+Em chào cô và các bạn. Hôm nay nhóm em trình bày thành tựu toán học của các nền văn minh cổ đại, qua ba nơi: Ai Cập, Trung Hoa và Ấn Độ. Nhóm có ba bạn, mỗi bạn phụ trách một phần. Em xin bắt đầu với Ai Cập.
 
-[SLIDE 2: Ai Cập] (4 bấm)
-Đây là Ai Cập: toán của người đo ruộng và xây kim tự tháp. Mời cả lớp nghĩ ba câu hỏi.
-[Bấm 1] Không có thước đo, người Ai Cập dựng góc vuông bằng cách nào? Họ dùng sợi dây thắt 12 nút, chia ba cạnh 3, 4, 5, kéo căng là ra góc vuông.
-[Bấm 2] Lũ sông Nile mỗi năm xóa ranh giới ruộng, vậy làm sao chia lại ruộng cho công bằng? Họ đo lại và chia ruộng thành các ô.
-[Bấm 3] Không có bảng cửu chương, làm sao tính 13 × 21? Lát nữa ta sẽ thấy.
-[Bấm 4] Người chúng ta gặp ở phần này là Ahmes.
+[SLIDE 2: Ai Cập] (3 bấm)
+Đây là Ai Cập. Phần của em có ba câu hỏi.
+[Bấm 1] Người Ai Cập viết số theo hệ nào? Họ dùng hệ thập phân, tức là đếm theo bậc 10.
+[Bấm 2] Họ tính diện tích hình tam giác và hình chữ nhật như thế nào?
+[Bấm 3] Họ dùng số π với giá trị bằng bao nhiêu? Lát nữa ta sẽ thấy.
 
 [SLIDE 3: Chữ số Ai Cập] (3 bấm)
-Người Ai Cập viết số bằng hình vẽ, mỗi hình là một bậc: 1, 10, 100, 1 000, 10 000, 100 000 và 1 triệu.
+Người Ai Cập sáng tạo chữ tượng hình, nhờ có chữ viết mà họ ghi lại được cả toán học. Họ viết số bằng hình vẽ, mỗi hình là một bậc: 1, 10, 100, 1 000, 10 000, 100 000 và 1 triệu.
 [Bấm 1] Ví dụ: 1 hoa sen, 3 cuộn dây, 2 vòng, 5 nét.
 [Bấm 2] Ghép lại thành 1 325.
-[Bấm 3] Số càng lớn thì càng phải vẽ nhiều hình, và họ chưa có số 0.
+[Bấm 3] Đây là hệ số thập phân: mỗi bậc gấp 10 lần bậc trước.
 
-[SLIDE 4: Nhân bằng gấp đôi] (5 bấm)
-Bây giờ tính 13 × 21. Cách của họ là nhân 21 lần lượt với 1, 2, 4, 8, tức là gấp đôi dần.
-[Bấm 1] Ta có: 1 × 21 = 21, 2 × 21 = 42, 4 × 21 = 84, 8 × 21 = 168.
-[Bấm 2] Ba dòng được tô sáng là dòng sẽ dùng.
-[Bấm 3] Vì 13 = 1 + 4 + 8, ta chỉ lấy ba dòng đó.
-[Bấm 4] Cộng lại: 21 + 84 + 168 = 273.
-[Bấm 5] Máy tính ngày nay cũng nhân theo cách này, gọi là nhị phân.
-Em xin nhường bạn thứ hai: Ahmes và sang Trung Hoa.
+[SLIDE 4: Cộng, trừ & diện tích] (3 bấm)
+Người Ai Cập biết làm phép cộng và phép trừ, và biết tính diện tích các hình.
+[Bấm 1] Hình chữ nhật: diện tích bằng chiều dài nhân chiều rộng.
+[Bấm 2] Hình tam giác: diện tích bằng một nửa của đáy nhân chiều cao.
+[Bấm 3] Tóm lại, người Ai Cập biết cộng, trừ và tính diện tích hình tam giác, hình chữ nhật.
 
-[SLIDE 19: Cảm ơn] (0 bấm)
-Bài của nhóm đến đây là hết. Em xin cảm ơn cô và các bạn đã lắng nghe.
+[SLIDE 5: Số π của Ai Cập] (3 bấm)
+Bây giờ là số π, tức chu vi hình tròn chia cho đường kính. Người Ai Cập đã biết sử dụng số π.
+[Bấm 1] Họ dùng π xấp xỉ 3,16.
+[Bấm 2] Số π thật là 3,14159 và còn nữa, nên giá trị của Ai Cập đã khá gần.
+[Bấm 3] Ai Cập biết dùng số π với giá trị khoảng 3,16. Em xin nhường bạn thứ hai, bạn sẽ đưa mọi người sang Trung Hoa.
 
-==== NGƯỜI 2: Ahmes + Trung Hoa, phần đầu (slide 5–8) (~360 chữ, ~2.4 phút) ====
+==== NGƯỜI 2: Trung Hoa (slide 6–9) (~280 chữ, ~1,9 phút) ====
 
-[SLIDE 5: Ahmes] (4 bấm)
-Người Ai Cập ghi lại các phép tính này nhờ thầy ký Ahmes, sống khoảng 1550 trước Công nguyên.
-[Bấm 1] Ông chép lại cuốn sách toán cổ nhất còn giữ đến nay.
-[Bấm 2] Đó là giấy cói Rhind, gồm các bài toán chia lương thực.
-[Bấm 3] Ông tự ghi: “phép tính để biết mọi bí ẩn”.
-[Bấm 4] Tóm lại, Ai Cập dùng toán để chia lương thực và đo lại ruộng sau mỗi mùa lũ sông Nile. Em xin tiếp tục với Trung Hoa ở slide sau.
+[SLIDE 6: Trung Hoa] (3 bấm)
+Em xin tiếp tục với Trung Hoa. Cũng có ba câu hỏi.
+[Bấm 1] Làm sao tính diện tích hình phẳng và thể tích hình khối?
+[Bấm 2] Dụng cụ nào giúp tính toán nhanh? Đó là bàn tính, lát nữa em sẽ nói.
+[Bấm 3] Họ tính được số π chính xác tới bao nhiêu chữ số thập phân? Đáp án là 7 chữ số.
 
-[SLIDE 6: Trung Hoa] (4 bấm)
-Em xin tiếp tục với Trung Hoa: toán của quan lại, thợ thủy lợi và nhà thiên văn. Cũng có ba câu hỏi.
-[Bấm 1] Làm sao biết núi cao bao nhiêu mà không cần leo lên? Họ dựa vào bóng để suy ra độ cao.
-[Bấm 2] Xếp hàng 3 thì thừa 2 người, hàng 5 thừa 3, hàng 7 thừa 2, có bao nhiêu lính? Đáp án là 23, bạn thứ ba sẽ giải thích.
-[Bấm 3] Làm sao tính số π (chu vi chia đường kính) đúng tới 7 chữ số chỉ bằng que tính?
-[Bấm 4] Ba nhà toán học ta sẽ gặp: Lưu Huy, Tổ Xung Chi, Tần Cửu Thiều.
+[SLIDE 7: Toán học Trung Hoa cổ đại] (1 bấm)
+Từ thời cổ đại, người Trung Hoa đã biết ba điều. Thứ nhất, họ dùng hệ số đếm thập phân, tức là đếm và tính theo bậc 10. Thứ hai, họ tính được diện tích các hình phẳng. Thứ ba, họ tính được thể tích các hình khối.
+[Bấm 1] Ngoài ra, họ còn tính π chính xác tới 7 chữ số thập phân và phát minh ra bàn tính. Em nói về hai điều này ở hai slide sau.
 
-[SLIDE 7: Cửu chương toán thuật] (1 bấm)
-Nền tảng của toán Trung Hoa là sách Cửu chương toán thuật, một sách giáo khoa toán thời Hán. Sách có 9 chương, hơn 240 bài toán đời sống: đo diện tích ruộng, tỷ lệ, căn bậc hai, thể tích công trình, thuế, tam giác vuông và nhiều nội dung khác.
-[Bấm 1] Nổi bật là chương 8: giải nhiều phương trình cùng lúc, tức khử Gauss, có cả số âm. Cách này sớm hơn châu Âu cả nghìn năm.
+[SLIDE 8: Số π chính xác tới 7 chữ số] (3 bấm)
+Cách tính π là vẽ đa giác trong hình tròn. Đa giác càng nhiều cạnh thì càng giống hình tròn, nên π càng chuẩn. Trên màn hình, đa giác tăng dần từ 6 cạnh.
+[Bấm 1] Người Trung Hoa là những người lần đầu tiên tính π chính xác tới 7 chữ số thập phân.
+[Bấm 2] Đó là π xấp xỉ 3,1415926.
+[Bấm 3] Vậy Trung Hoa là nơi lần đầu tiên tính được π chính xác tới 7 chữ số thập phân.
 
-[SLIDE 8: Lưu Huy] (4 bấm)
-Người đầu tiên là Lưu Huy, sống khoảng năm 220 đến 280, thời nước Ngụy.
-[Bấm 1] Ông là người giải thích sách Cửu chương vào năm 263.
-[Bấm 2] Ông chứng minh vì sao mỗi cách tính đều đúng.
-[Bấm 3] Ông tính π bằng đa giác trong hình tròn.
-[Bấm 4] Lưu Huy không chỉ đưa đáp án, ông chứng minh từng bước. Mời bạn thứ ba tiếp tục với số π.
+[SLIDE 9: Bàn tính] (3 bấm)
+Phát minh cuối của Trung Hoa mà em nói là bàn tính.
+[Bấm 1] Các hạt được xâu trên que, mỗi hàng là một bậc của số.
+[Bấm 2] Bàn tính dựa trên hệ thập phân: đơn vị, chục, trăm, nghìn.
+[Bấm 3] Bàn tính là dụng cụ tính toán do người Trung Hoa phát minh. Em xin nhường bạn thứ ba, bạn sẽ đưa mọi người sang Ấn Độ.
 
-==== NGƯỜI 3: Số π + Trung Hoa, phần sau + mở Ấn Độ (slide 9–13) (~396 chữ, ~2.6 phút) ====
+==== NGƯỜI 3: Ấn Độ + tổng kết + kết bài (slide 10–14) (~275 chữ, ~1,9 phút) ====
 
-[SLIDE 9: Tính π bằng đa giác] (3 bấm)
-Cách tính π: vẽ đa giác trong hình tròn. Đa giác càng nhiều cạnh thì càng giống hình tròn, nên π càng chuẩn. Trên màn hình, đa giác tăng dần từ 6 cạnh.
-[Bấm 1] Lưu Huy dùng đa giác 3072 cạnh, được 3,1416.
-[Bấm 2] Sau này Tổ Xung Chi được 355 chia 113, bằng 3,1415929.
-[Bấm 3] Độ chính xác tới 6 chữ số, là kỷ lục thế giới suốt gần 900 năm. Sau đây là Tổ Xung Chi.
+[SLIDE 10: Ấn Độ] (2 bấm)
+Em xin tiếp tục với phần cuối: Ấn Độ. Em có hai câu hỏi.
+[Bấm 1] Đóng góp quan trọng nhất của toán học Ấn Độ là gì? Đó là việc sáng tạo ra 10 chữ số, từ 0 đến 9.
+[Bấm 2] Người Ấn Độ tính được số π bằng bao nhiêu?
 
-[SLIDE 10: Tổ Xung Chi] (4 bấm)
-Tổ Xung Chi sống từ năm 429 đến 500, thời Nam triều.
-[Bấm 1] Ông tính π đúng tới 7 chữ số: 3,1415926.
-[Bấm 2] Chỉ cần nhớ 355 chia 113 là có π chuẩn. Đây là đáp án câu hỏi lúc nãy.
-[Bấm 3] Ông còn cùng con trai tính thể tích hình cầu.
-[Bấm 4] Mẹo nhớ: viết 113 355, các số đi thành cặp 1-1, 3-3, 5-5.
-
-[SLIDE 11: Tần Cửu Thiều] (4 bấm)
-Nhà toán học thứ ba là Tần Cửu Thiều, sống khoảng 1202 đến 1261, thời nhà Tống.
-[Bấm 1] Ông viết sách Số thư cửu chương năm 1247.
-[Bấm 2] Ông giải bài toán chia dư kiểu Tôn Tử.
-[Bấm 3] Ông giải phương trình bậc cao, trước Horner 500 năm.
-[Bấm 4] Cách giải “chia dư” là nền của mật mã RSA ngày nay.
-
-[SLIDE 12: Chia dư & Tam giác Yang Hui] (5 bấm)
-Hai phát minh của Trung Hoa mà ta nên biết.
-[Bấm 1] Bài toán Tôn Tử: số nào chia 3 dư 2, chia 5 dư 3, chia 7 dư 2?
-[Bấm 2] Đáp án là 23.
-[Bấm 3] Đây là tam giác Yang Hui, năm 1261.
-[Bấm 4] Cách tạo: mỗi số bằng tổng hai số ngay phía trên, ví dụ 3 = 1 + 2 và 10 = 4 + 6, hai mép luôn là 1. Trung Hoa biết nó trước Pascal 300 năm.
-[Bấm 5] Cả hai phát minh đều có mặt trong toán và mật mã ngày nay.
-
-[SLIDE 13: Ấn Độ] (4 bấm)
-Cuối cùng là Ấn Độ, nơi sinh ra con số 0 và hệ thập phân. Có ba câu hỏi.
-[Bấm 1] Vì sao số 0 quan trọng đến vậy?
-[Bấm 2] Chỉ với 10 chữ số, từ 0 đến 9, làm sao viết được mọi số?
-[Bấm 3] Trái Đất có tự quay không? Người Ấn Độ đã nói có, từ năm 499.
-[Bấm 4] Bốn nhân vật sẽ gặp: Baudhayana, Aryabhata, Brahmagupta, Bhaskara II. Mời bạn thứ tư.
-
-==== NGƯỜI 4: Ấn Độ (slide 14–18) (~369 chữ, ~2.5 phút) ====
-
-[SLIDE 14: Baudhayana] (4 bấm)
-Baudhayana sống khoảng 800 trước Công nguyên.
-[Bấm 1] Sách Sulba Sutra của ông dạy dựng bàn thờ bằng dây.
-[Bấm 2] Ông đã biết a² + b² = c², tức định lý Pythagoras.
-[Bấm 3] Ông tính √2 xấp xỉ 1,414216, rất chuẩn.
-[Bấm 4] Thợ Ấn Độ dùng dây thắt nút 3-4-5 để dựng góc vuông. Ví dụ: 9 + 16 = 25.
-
-[SLIDE 15: Aryabhata] (4 bấm)
-Aryabhata sống từ năm 476 đến 550.
-[Bấm 1] Sách Aryabhatiya viết năm 499, bằng thơ.
-[Bấm 2] Ông lập bảng sin đầu tiên cho thiên văn.
-[Bấm 3] Ông nói Trái Đất tự quay quanh trục. Đây là đáp án câu hỏi lúc nãy.
-[Bấm 4] Vệ tinh đầu tiên của Ấn Độ năm 1975 mang tên Aryabhata.
-
-[SLIDE 16: Số 0 & hệ thập phân] (5 bấm)
-Số 0 giúp chữ số có “vị trí”.
+[SLIDE 11: 10 chữ số ta dùng ngày nay] (5 bấm)
+Mười chữ số mà ngày nay chúng ta đang sử dụng do người Ấn Độ sáng tạo ra. Nhờ vị trí của chữ số, ta phân biệt được số 12 và số 102.
 [Bấm 1] Số 12 là mười hai.
 [Bấm 2] Số 102 là một trăm linh hai.
-[Bấm 3] Không có số 0 thì 12 và 102 dễ nhầm. Số 0 là chỗ giữ vị trí.
-[Bấm 4] Brahmagupta biến 0 thành con số thật: a + 0 = a, và a × 0 = 0.
-[Bấm 5] Số này đi từ Ấn Độ sang Ả Rập rồi sang châu Âu, nên gọi là “chữ số Ả Rập” nhưng gốc ở Ấn Độ.
+[Bấm 3] Không có số 0 thì 12 và 102 dễ nhầm, số 0 là chỗ giữ vị trí.
+[Bấm 4] Chỉ cần 10 chữ số, từ 0 đến 9, là viết được mọi số.
+[Bấm 5] Đây là đóng góp quan trọng nhất của toán học Ấn Độ.
 
-[SLIDE 17: Brahmagupta] (5 bấm)
-Brahmagupta sống từ năm 598 đến 668, ở Ujjain.
-[Bấm 1] Sách Brahmasphutasiddhanta, năm 628.
-[Bấm 2] Lần đầu có quy tắc cho số 0.
-[Bấm 3] Số âm là nợ, số dương là tài sản.
-[Bấm 4] Nợ nhân nợ là tài sản: (−3) × (−2) = +6. Tài sản nhân nợ là nợ: 3 × (−2) = −6.
-[Bấm 5] Nhờ số âm, ông giải được mọi phương trình bậc hai.
+[SLIDE 12: Số π của Ấn Độ] (3 bấm)
+Ngoài chữ số, người Ấn Độ còn tính số π. Họ tính được giá trị của π ở mức:
+[Bấm 1] π xấp xỉ 3,1416.
+[Bấm 2] Số π thật là 3,14159, nên giá trị này chính xác hơn của Ai Cập, vốn là 3,16.
+[Bấm 3] Ấn Độ tính được π xấp xỉ 3,1416.
 
-[SLIDE 18: Bhaskara II] (4 bấm)
-Bhaskara II sống từ năm 1114 đến 1185.
-[Bấm 1] Sách Lilavati, sách toán bằng thơ cho học trò.
-[Bấm 2] Ông giải bài khó x² − 61y² = 1.
-[Bấm 3] Ông có ý tưởng “thay đổi tức thời”, chính là mầm của vi phân.
-[Bấm 4] Nghiệm nhỏ nhất của bài này là x = 1 766 319 049 và y = 226 153 980. Ông tìm ra bằng tay, còn châu Âu mãi thế kỷ 18 mới giải được.
+[SLIDE 13: Số π qua ba nền văn minh] (5 bấm)
+Để tổng kết, ta so sánh số π của ba nền văn minh. Cùng một số π, nhưng ngày càng chính xác hơn.
+[Bấm 1] Ai Cập: 3,16.
+[Bấm 2] Ấn Độ: 3,1416.
+[Bấm 3] Trung Hoa: 3,1415926, chính xác tới 7 chữ số thập phân.
+[Bấm 4] Số π thật là 3,14159265 và còn nữa.
+[Bấm 5] Ai Cập và Trung Hoa dùng hệ thập phân, còn Ấn Độ sáng tạo ra 10 chữ số mà ta dùng ngày nay.
 
-==== NẾU CHỈ CÓ 3 NGƯỜI ====
-Người 1: slide 1–4 và 19. Người 2: slide 5–11 (gộp Người 2 + Người 3 đến Tần Cửu Thiều). Người 3: slide 12–18 (đọc chia dư, Yang Hui, rồi Ấn Độ).
+[SLIDE 14: Cảm ơn] (0 bấm)
+Bài của nhóm đến đây là hết. Em xin cảm ơn cô và các bạn đã lắng nghe.
+
 ==== NẾU CHỈ CÓ 2 NGƯỜI ====
-Người 1: slide 1–9 và 19. Người 2: slide 10–18.
+Người 1: slide 1–7. Người 2: slide 8–14.
