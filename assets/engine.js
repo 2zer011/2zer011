@@ -89,7 +89,7 @@
       e = els[i];
       if (hasFx(e) || e.getAttribute('data-step') !== null || covered(e, s)) continue;
       t = e.tagName.toLowerCase();
-      e.className = (cls(e) + ' ' + (t === 'li' || t === 'h2' ? 'fx-left' : hasCls(e, 'q') ? 'fx-right' : t === 'svg' ? 'fx-fade' : 'fx-up')).replace(/^\s+/, '');
+      e.className = (cls(e) + ' ' + (t === 'li' || t === 'h2' ? 'fx-left' : hasCls(e, 'q') ? 'fx-right' : t === 'svg' ? 'fx-fade' : hasCls(e, 'card') ? ['fx-up', 'fx-flipx', 'fx-rubber'][n % 3] : 'fx-up')).replace(/^\s+/, '');
       var dl = Math.min(2.4, .15 + n * .11) + 's'; e.style.animationDelay = dl; e.style.webkitAnimationDelay = dl; n++;
     }
   }
@@ -144,15 +144,18 @@
     try { var cs = w.getComputedStyle(nu), bs = d.body.style; bs.backgroundColor = cs.backgroundColor; bs.backgroundImage = cs.backgroundImage; bs.backgroundSize = '100% 100%'; d.documentElement.style.background = 'none'; } catch (x) {} /* lấp 2 mép đen bằng nền của slide */
     var o = old; cur = n; ui();
     clearTimeout(go.t);
+    /* thời gian dọn class chuyển slide theo từng kiểu (ms) - phải >= thời lượng animation, nếu không slide cũ bị cắt cụt */
+    var TD = { iris: 1150, drift: 1150, blinds: 1150, warp: 1250, book: 1350, cube: 1150, slice: 1100, fold: 1050, lens: 1150 };
     go.t = setTimeout(function () {
       if (o) o.className = o.className.replace(/ ?(leaving|rev|in-\w+|out-\w+)/g, '');
       nu.className = nu.className.replace(/ ?(rev|in-\w+|out-\w+)/g, '');
-    }, 1050);
+    }, TD[type] || 1050);
     runMorph(nu); counts(nu, back);
+    if (w.FX) { try { w.FX.enter(nu, old, back); } catch (e) {} } /* fx2.js: hạt, tia sáng, parallax, pháo hoa */
   }
   function next() {
     var s = slides[cur], st = steps(s), n = revealed(s);
-    if (n < st.length) { add(st[n], 'on'); stepCounts(st[n]); return; }
+    if (n < st.length) { add(st[n], 'on'); stepCounts(st[n]); if (w.FX) { try { w.FX.step(st[n]); } catch (e) {} } return; }
     go(cur + 1, false);
   }
   function prev() {

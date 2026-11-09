@@ -1,0 +1,174 @@
+/* ==========================================================================
+   fx2.css  —  LỚP HIỆU ỨNG NÂNG CẤP (v2) dùng chung cho mọi bài
+   --------------------------------------------------------------------------
+   Nạp SAU engine.css + các theme CSS. Chỉ THÊM, không sửa hiệu ứng cũ, nên
+   gỡ file này (và fx2.js) là bài quay về như cũ.
+   Gồm:
+     1. 4 kiểu chuyển slide mới: cube, slice, fold, lens (data-t="...")
+     2. 4 hiệu ứng xuất hiện mới: fx-flipx, fx-rubber, fx-drop, fx-rise3d
+     3. Gạch chân tiêu đề tự vẽ + ánh sáng chạy
+     4. Chữ <b> được "tô bút dạ" lần lượt
+     5. Chữ tiêu đề lớn (.split) nháy sáng gợn sóng sau khi rơi xuống
+     6. Lớp động do fx2.js tạo: tia sáng quét, vòng sóng, đèn rọi theo chuột, canvas hạt
+     7. Chế độ Lite / giảm chuyển động: tắt hết phần mới
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   1. CHUYỂN SLIDE MỚI
+   Engine gán class "in-<tên>" cho slide đi vào và "out-<tên>" cho slide đi ra
+   (thêm ".rev" khi bấm lùi). Ta chỉ cần định nghĩa animation cho các class đó.
+   ------------------------------------------------------------------------- */
+
+/* CUBE: hai slide xoay như hai mặt của khối lập phương.
+   Slide ra xoay quanh MÉP PHẢI của nó, slide vào xoay quanh MÉP TRÁI,
+   hai mép trùng nhau tại giữa => mắt nhìn thấy "khối" quay. */
+.in-cube{transform-origin:0 50%;animation:tCubeIn 1.1s cubic-bezier(.65,0,.25,1) both}
+.out-cube{transform-origin:100% 50%;animation:tCubeOut 1.1s cubic-bezier(.65,0,.25,1) both}
+.rev.in-cube{transform-origin:100% 50%;animation-name:tCubeInR}
+.rev.out-cube{transform-origin:0 50%;animation-name:tCubeOutR}
+@keyframes tCubeIn{from{transform:perspective(1800px) translateX(100%) rotateY(90deg);opacity:.4}to{transform:perspective(1800px) none;opacity:1}}
+@keyframes tCubeOut{from{transform:perspective(1800px) none;opacity:1}to{transform:perspective(1800px) translateX(-100%) rotateY(-90deg);opacity:.4}}
+@keyframes tCubeInR{from{transform:perspective(1800px) translateX(-100%) rotateY(-90deg);opacity:.4}to{transform:perspective(1800px) none;opacity:1}}
+@keyframes tCubeOutR{from{transform:perspective(1800px) none;opacity:1}to{transform:perspective(1800px) translateX(100%) rotateY(90deg);opacity:.4}}
+
+/* SLICE: slide mới "mọc" thành 8 dải dọc (dùng mask lặp theo chiều ngang).
+   Mỗi dải rộng 160px; mask-size tăng từ 0 -> 160px nên các dải nở dần từ mép trái. */
+.in-slice{-webkit-mask-image:linear-gradient(#000,#000);mask-image:linear-gradient(#000,#000);-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;animation:tSliceIn 1.05s cubic-bezier(.65,0,.3,1) both}
+.out-slice{animation:tSliceOut 1.05s ease both}
+@keyframes tSliceIn{from{-webkit-mask-size:0 100%;mask-size:0 100%}to{-webkit-mask-size:160px 100%;mask-size:160px 100%}}
+@keyframes tSliceOut{from{opacity:1;transform:none}to{opacity:.3;transform:scale(1.06)}}
+
+/* FOLD: slide mới gập từ dưới lên như tờ giấy dựng đứng, slide cũ lùi ra xa. */
+.in-fold{transform-origin:50% 100%;animation:tFoldIn 1s cubic-bezier(.2,.8,.2,1) both}
+.out-fold{animation:tFoldOut 1s ease both}
+@keyframes tFoldIn{from{opacity:0;transform:perspective(1600px) rotateX(-70deg) translateY(30%)}to{opacity:1;transform:perspective(1600px) none}}
+@keyframes tFoldOut{from{opacity:1;transform:none}to{opacity:0;transform:scale(.9) translateY(-6%)}}
+.rev.in-fold{transform-origin:50% 0;animation-name:tFoldInR}
+@keyframes tFoldInR{from{opacity:0;transform:perspective(1600px) rotateX(70deg) translateY(-30%)}to{opacity:1;transform:perspective(1600px) none}}
+
+/* LENS: một vòng tròn sáng mở rộng từ GÓC DƯỚI PHẢI, ảnh hơi thu nhỏ khi mở. */
+.in-lens{animation:tLensIn 1.1s cubic-bezier(.6,0,.2,1) both}
+.out-lens{animation:tLensOut 1.1s ease both}
+@keyframes tLensIn{from{opacity:.5;transform:scale(1.15);clip-path:circle(0% at 100% 100%);-webkit-clip-path:circle(0% at 100% 100%)}to{opacity:1;transform:none;clip-path:circle(150% at 100% 100%);-webkit-clip-path:circle(150% at 100% 100%)}}
+@keyframes tLensOut{from{opacity:1;transform:none}to{opacity:.35;transform:scale(.92)}}
+.rev.in-lens{animation-name:tLensInR}
+@keyframes tLensInR{from{opacity:.5;transform:scale(1.15);clip-path:circle(0% at 0 0);-webkit-clip-path:circle(0% at 0 0)}to{opacity:1;transform:none;clip-path:circle(150% at 0 0);-webkit-clip-path:circle(150% at 0 0)}}
+
+/* -------------------------------------------------------------------------
+   2. HIỆU ỨNG XUẤT HIỆN MỚI (dùng như các fx-* cũ, đi kèm d1..d8 được)
+   Mẫu 3 dòng giống engine.css:
+     (a) chạy ngay khi slide .cur nếu phần tử KHÔNG nằm trong data-step
+     (b) tắt animation nếu nằm BÊN TRONG một data-step chưa bật
+     (c) chạy khi data-step cha được bật (.on)
+   ------------------------------------------------------------------------- */
+.fx-flipx{-webkit-transform-origin:50% 0;transform-origin:50% 0}
+.cur .fx-flipx:not([data-step]),.on.fx-flipx{animation:fxFlipX .95s cubic-bezier(.2,.9,.3,1.1) both}
+.cur [data-step] .fx-flipx{animation:none}
+.cur [data-step].on .fx-flipx{animation:fxFlipX .95s cubic-bezier(.2,.9,.3,1.1) both}
+@keyframes fxFlipX{from{opacity:0;transform:perspective(900px) rotateX(-88deg)}60%{opacity:1;transform:perspective(900px) rotateX(10deg)}to{opacity:1;transform:perspective(900px) none}}
+
+.cur .fx-rubber:not([data-step]),.on.fx-rubber{animation:fxRubber 1.1s both}
+.cur [data-step] .fx-rubber{animation:none}
+.cur [data-step].on .fx-rubber{animation:fxRubber 1.1s both}
+@keyframes fxRubber{0%{opacity:0;transform:scale(.3)}30%{opacity:1;transform:scale(1.14,.88)}48%{transform:scale(.92,1.08)}66%{transform:scale(1.05,.97)}82%{transform:scale(.99,1.01)}100%{opacity:1;transform:none}}
+
+.cur .fx-drop:not([data-step]),.on.fx-drop{animation:fxDrop 1.05s both}
+.cur [data-step] .fx-drop{animation:none}
+.cur [data-step].on .fx-drop{animation:fxDrop 1.05s both}
+@keyframes fxDrop{0%{opacity:0;transform:translateY(-420px);animation-timing-function:cubic-bezier(.6,0,1,.6)}50%{opacity:1;transform:translateY(0);animation-timing-function:ease-out}66%{transform:translateY(-34px);animation-timing-function:ease-in}80%{transform:translateY(0);animation-timing-function:ease-out}90%{transform:translateY(-9px);animation-timing-function:ease-in}100%{opacity:1;transform:none}}
+
+.cur .fx-rise3d:not([data-step]),.on.fx-rise3d{animation:fxRise3d 1s cubic-bezier(.2,.8,.2,1) both}
+.cur [data-step] .fx-rise3d{animation:none}
+.cur [data-step].on .fx-rise3d{animation:fxRise3d 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fxRise3d{from{opacity:0;transform:perspective(800px) translateZ(-260px) translateY(70px) rotateY(-16deg)}to{opacity:1;transform:perspective(800px) none}}
+
+/* -------------------------------------------------------------------------
+   3. GẠCH CHÂN TIÊU ĐỀ TỰ VẼ
+   Class "fx2" được fx2.js gắn vào <html>. Viền dưới cũ của h2 chuyển thành
+   trong suốt (giữ nguyên bề dày để KHÔNG lệch bố cục), thay bằng một thanh
+   gradient (pseudo-element) vẽ từ trái sang phải, rồi có vệt sáng chạy mãi.
+   ------------------------------------------------------------------------- */
+.fx2 h2{border-bottom-color:transparent;position:relative}
+.fx2 h2:after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:3px;
+background:linear-gradient(90deg,#b8892b 0%,#f6dc8a 25%,#b8892b 50%,#f6dc8a 75%,#b8892b 100%);background-size:200% 100%;
+-webkit-transform-origin:0 50%;transform-origin:0 50%;-webkit-transform:scaleX(0);transform:scaleX(0)}
+.fx2 .cur h2:after{animation:ulDraw 1s cubic-bezier(.2,.8,.2,1) .9s forwards,ulShine 4.5s linear 2.2s infinite}
+@keyframes ulDraw{to{transform:scaleX(1)}}
+@keyframes ulShine{from{background-position:0 0}to{background-position:-200% 0}}
+/* màu gạch chân theo từng theme (khớp với màu viền cũ) */
+.fx2 .rn h2:after{background-image:linear-gradient(90deg,#7fa8ff 0%,#f5d98a 25%,#7fa8ff 50%,#f5d98a 75%,#7fa8ff 100%)}
+.fx2 .rm h2:after{background-image:linear-gradient(90deg,#7fd6e8 0%,#f5d98a 25%,#7fd6e8 50%,#f5d98a 75%,#7fd6e8 100%)}
+.fx2 .rl h2:after{background-image:linear-gradient(90deg,#e6b95a 0%,#fff0b8 25%,#e6b95a 50%,#fff0b8 75%,#e6b95a 100%)}
+.fx2 .cn h2:after{background-image:linear-gradient(90deg,#a3341c 0%,#e8b94a 25%,#a3341c 50%,#e8b94a 75%,#a3341c 100%)}
+.fx2 .dark h2:after{background-image:linear-gradient(90deg,#c79a3a 0%,#fff1b8 25%,#c79a3a 50%,#fff1b8 75%,#c79a3a 100%)}
+
+/* -------------------------------------------------------------------------
+   4. CHỮ ĐẬM <b> ĐƯỢC "TÔ BÚT DẠ"
+   Một dải màu mảnh chạy dưới chân chữ: background-size 0 -> 100%.
+   - Chữ không nằm trong data-step: tô sau 1.3s khi slide hiện.
+   - Chữ nằm trong data-step: chỉ tô sau khi bấm hiện khối đó (.on).
+   Loại trừ .count (số chạy) và b nằm trong h1/h2/h3.
+   ------------------------------------------------------------------------- */
+.fx2 .card b,.fx2 .sum b,.fx2 .q b,.fx2 p b,.fx2 li b{background:linear-gradient(rgba(240,190,60,.42),rgba(240,190,60,.42)) no-repeat 0 92%;background-size:0 .3em}
+.fx2 .count{background:none}
+.fx2 .cur .card b,.fx2 .cur .sum b,.fx2 .cur .q b,.fx2 .cur p b,.fx2 .cur li b{animation:mkOn .9s cubic-bezier(.3,.7,.2,1) 1.3s forwards}
+.fx2 .cur [data-step] b{animation:none;background-size:0 .3em}
+.fx2 .cur [data-step].on b{animation:mkOn .9s cubic-bezier(.3,.7,.2,1) .8s forwards}
+.fx2 .cur b.count{animation:none;background:none}
+@keyframes mkOn{to{background-size:100% .3em}}
+
+/* -------------------------------------------------------------------------
+   5. CHỮ TIÊU ĐỀ LỚN NHÁY SÁNG GỢN SÓNG
+   engine.css đã cho mỗi chữ (.ch) rơi xuống bằng animation chIn. Ở đây ta
+   THÊM animation thứ hai chGlow vào cùng danh sách. fx2.js đặt animation-delay
+   dạng "chậm của chIn, chậm của chGlow" cho từng chữ để sóng sáng chạy từ trái sang phải.
+   Dùng fill-mode "forwards" (không "both") để chGlow KHÔNG đè trạng thái ban đầu của chIn.
+   ------------------------------------------------------------------------- */
+.cur .split .ch{animation:chIn .8s cubic-bezier(.2,1.5,.4,1) both,chGlow 1.5s ease-in-out forwards}
+@keyframes chGlow{0%,100%{transform:none;-webkit-filter:none;filter:none}45%{transform:translateY(-10px) scale(1.12);-webkit-filter:brightness(1.55) drop-shadow(0 0 12px rgba(255,214,120,.95));filter:brightness(1.55) drop-shadow(0 0 12px rgba(255,214,120,.95))}}
+
+/* thanh tiến trình: thêm "đầu sao" phát sáng ở mút phải */
+#bar{box-shadow:0 0 12px rgba(255,214,120,.9)}
+#bar:after{content:"";position:absolute;right:-5px;top:-4px;width:12px;height:12px;border-radius:50%;background:#fff3c4;box-shadow:0 0 14px 5px rgba(255,214,120,.85)}
+
+/* nhịp đập cho số thứ tự câu hỏi khi khối câu hỏi vừa hiện */
+.qgroup.on .qn{animation:qnPulse 1.1s ease-out .55s 2}
+@keyframes qnPulse{0%{box-shadow:0 0 0 0 rgba(255,214,120,.95)}100%{box-shadow:0 0 0 22px rgba(255,214,120,0)}}
+
+/* mũi tên (đường .march) dòng chảy: dùng cho SVG tự đặt class "flow" */
+.cur .flow{stroke-dasharray:10 8;animation:flowDash 1s linear infinite}
+@keyframes flowDash{to{stroke-dashoffset:-36}}
+
+/* -------------------------------------------------------------------------
+   6. CÁC LỚP ĐỘNG DO fx2.js TẠO (nằm trong #stage, trên các slide)
+   ------------------------------------------------------------------------- */
+#fxc{position:absolute;left:0;top:0;width:1280px;height:720px;z-index:5;pointer-events:none}
+/* tia sáng chéo quét ngang mỗi lần sang slide */
+#fxsweep{position:absolute;left:0;top:-10%;width:30%;height:120%;z-index:6;pointer-events:none;opacity:0;
+background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,248,215,.34),rgba(255,255,255,0));
+-webkit-transform:translateX(-200%) skewX(-18deg);transform:translateX(-200%) skewX(-18deg)}
+#fxsweep.go{animation:fxSweep 1.25s ease-out}
+@keyframes fxSweep{0%{opacity:1;transform:translateX(-200%) skewX(-18deg)}85%{opacity:1}100%{opacity:0;transform:translateX(480%) skewX(-18deg)}}
+/* đèn rọi bám theo con trỏ chuột (hiện khi di chuột, tự tắt sau ~2.6s) */
+#fxspot{position:absolute;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;border-radius:50%;z-index:6;pointer-events:none;opacity:0;
+background:radial-gradient(circle,rgba(255,236,170,.26),rgba(255,236,170,.08) 45%,rgba(255,236,170,0) 68%);
+-webkit-transition:opacity .6s;transition:opacity .6s;will-change:transform}
+#fxspot.on{opacity:1}
+/* vòng sóng lan ra khi một khối vừa hiện */
+.fxring{position:absolute;z-index:6;pointer-events:none;border-radius:50%;border:3px solid rgba(255,214,120,.95);
+box-shadow:0 0 18px rgba(255,214,120,.8),inset 0 0 14px rgba(255,214,120,.5);animation:fxRing .95s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes fxRing{from{opacity:1;transform:scale(.15)}to{opacity:0;transform:scale(1)}}
+
+/* -------------------------------------------------------------------------
+   7. LITE MODE / GIẢM CHUYỂN ĐỘNG: tắt toàn bộ phần mới.
+   (engine.css đã ép mọi animation còn 0.2s trong .lite; ở đây ẩn thêm các lớp động.)
+   ------------------------------------------------------------------------- */
+.lite #fxc,.lite #fxsweep,.lite #fxspot,.lite .fxring{display:none!important}
+/* html.fx2 > body.lite: gạch chân hiện sẵn, không chạy vệt sáng vô hạn */
+.fx2 .lite h2:after{transform:scaleX(1);animation:none!important}
+.fx2 .lite .cur .split .ch{animation:chIn .2s both!important}
+.fx2 .lite b{background:none!important;animation:none!important}
+@media (prefers-reduced-motion:reduce){
+  #fxc,#fxsweep,#fxspot,.fxring{display:none!important}
+  .fx2 h2:after{transform:scaleX(1)!important;animation:none!important}
+}
